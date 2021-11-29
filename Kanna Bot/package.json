@@ -1,0 +1,30 @@
+{
+    "name": "djs",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "start": "node index.js",
+        "node-update": "npm i --save-dev node@16 && npm config set prefix=$(pwd)/node_modules/node && export PATH=$(pwd)/node_modules/node/bin:$PATH",
+        "node-clean": "rm -rf node_modules && rm package-lock.json && npm cache clear --force && npm cache clean --force && npm i",
+        "node-update-then-clean": "npm run node-update && npm run node-clean"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "@distube/spotify": "^1.0.0",
+        "avconv": "^3.1.0",
+        "discord.js": "^13.3.1",
+        "distube": "^3.0.3",
+        "ffmpeg-static": "^4.4.0",
+        "fs": "^0.0.1-security",
+        "glob": "^7.1.7",
+        "libsodium-wrappers": "^0.7.9",
+        "mongoose": "^5.13.2",
+        "opmongo": "^1.0.0-beta"
+    },
+    "devDependencies": {
+        "node": "^16.6.1"
+    }
+}
