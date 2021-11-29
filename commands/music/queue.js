@@ -45,17 +45,38 @@ const buttons = new MessageActionRow().addComponents(
 );
 
 
-const q = queue.songs.map((song, i) => `${i === 0 ? "Playing:" : `${i}.`} ${song.name} - \`${song.formattedDuration}\``).join("\n")
+//const q = queue.songs.map((song, i) => `${i === 0 ? "Playing:" : `${i}.`} ${song.name} - \`${song.formattedDuration}\``).join("\n")
+//console.log(queue.songs)
 
-const qtest = new MessageEmbed()
+    //let emojil;    
+    const queuedata = queue.songs.map((song, i) => `${song.source === "youtube" ? "<:YouTube:914836593615970364> " : "<:SpotifyLogo:914834257640304650> "}[${song.name}](${song.url}) - **\`${song.formattedDuration}\`**`).join("\n")
+    console.log(queuedata.length)
+    console.log(queuedata.size)
+
+    if(queuedata.length > 4096){
+       await queuedata.slice(0, 29)
+
+        const test = new MessageEmbed()
 .setColor(client.config.embed)
-.setDescription(`****`)
+.setDescription(`${queuedata}`)
+.setFooter("The queue command isn't complete gomen...")
 .setTitle("Server Queue:");
 
+        message.channel.send({embeds: [test], components: [buttons]})
         
-        message.channel.send({embeds: [qtest], components: [buttons]})
+    
+    
+    } else {
+    
      
-        console.log(queue.songs)
+    const qtest = new MessageEmbed()
+.setColor(client.config.embed)
+.setDescription(`${queuedata}`)
+.setTitle("Server Queue:");
+
+        message.channel.send({embeds: [qtest]})
+     
+    }
 
     } catch (e) {ErrorMessage(message, e)}
 }

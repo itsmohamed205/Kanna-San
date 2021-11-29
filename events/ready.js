@@ -1,7 +1,7 @@
 const client = require("../index");
+const {MessageEmbed} = require("discord.js")
 
-
-client.on("ready", () => {
+client.on("ready", async () => {
   
   const botactivities = [
     {
@@ -54,6 +54,18 @@ console.log(`${client.user.tag} Is Online Saikawa :)`)
       allChannels.add(channel.id);
     });
   });
+
+  try{
+    const embed = new MessageEmbed()
+    .setColor("#2c2f33")
+    .setDescription(`${client.emotes.success} | **The System is successfully online Saikawa!**\nServers: **\`${client.guilds.cache.size}\`**\nCached Users: **\`${allMembers.size}\`**\nPing: \`${client.ws.ping}\``)
+    .setTimestamp()
+    .setFooter("Boot Up Date");
+   const home = await client.guilds.cache.get("874941747778707457")
+   const channel = await home.channels.cache.get("913203653345681438")
+   await channel.send({ embeds: [embed] })
+
+  } catch (e) {console.log(e)}
 
   console.log(`${client.guilds.cache.size} Servers\n` + `${client.channels.cache.size} Channels\n` + `${allMembers.size} Members`);
 setInterval(() => {
