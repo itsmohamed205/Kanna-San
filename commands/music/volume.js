@@ -44,7 +44,7 @@ run: async (client, message, args) => {
             style: "SUCCESS",
             disabled: false
     }
-    stateP = {
+    statep = {
         style: "SECONDARY",
         disabled: true
     }
