@@ -4,7 +4,7 @@ const { ErrorMessage } = require("../../fc")
 module.exports = {
     name: "play",
     aliases: ["p"],
-    cooldown: 5,
+    cooldown: 3,
     inVoiceChannel: true,
     run: async (client, message, args) => {
         try {
