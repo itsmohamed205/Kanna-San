@@ -72,31 +72,38 @@ if(parseInt(queue.volume) === 0) {
         const buttons = new MessageActionRow().addComponents(
             new MessageButton()
             .setStyle(statev.style)
+            .setCustomId("volumeminus")
             .setDisabled(statev.disabled)
             .setEmoji("915408576376348702")
             .setLabel("-10"),
 
             new MessageButton()
             .setStyle(statep.style)
+            .setCustomId("volumeplus")
             .setDisabled(statep.disabled)
             .setEmoji("915408576376348702")
             .setLabel("+10"),
 
             new MessageButton()
             .setStyle(states.style)
+            .setCustomId("volumemute")
             .setDisabled(states.disabled)
             .setEmoji("915408576376348702")
             .setLabel("Mute"),
 
             new MessageButton()
             .setStyle(stateo.style)
+            .setCustomId("volumeopen")
             .setDisabled(stateo.disabled)
             .setEmoji("915408576376348702")
             .setLabel("Unmute")
         )
+        const channelvc = await message.guild.channels.cache.get(member.voice.channelId)
         const novol = new MessageEmbed()
         .setColor(client.config.embed)
-        .setDescription(`${client.emotes.play} | Volume is \`${queue.volume}\``);
+        .setThumbnail(queue.songs[0].thumbnail)
+        .setAuthor(queue.songs[0].name, "https://emoji.gg/assets/emoji/7670-musicbeat.gif", queue.songs[0].url)
+        .setDescription(`Current Queue Volume is \`${queue.volume}\` ${client.emotes.play} For \`${channelvc.name}\``);
 
         if(!args[0] || args[0] === undefined)return message.channel.send({embeds: [novol], components: [buttons]})
         
@@ -113,6 +120,8 @@ if(parseInt(queue.volume) === 0) {
 
         queue.setVolume(volume)
         message.channel.send({embeds: [done]})
+     
+        const collector = await originMsg.createMessageComponentCollector({ componentType: 'BUTTON', time: 60000 });
 
     } catch (e) {ErrorMessage(message, e)}
 }
