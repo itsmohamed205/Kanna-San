@@ -58,7 +58,7 @@ console.log(`${client.user.tag} Is Online Saikawa :)`)
   try{
     const embed = new MessageEmbed()
     .setColor("#2c2f33")
-    .setDescription(`${client.emotes.success} | **The System is successfully online Saikawa!**\nServers: **\`${client.guilds.cache.size}\`**\nCached Users: **\`${allMembers.size}\`**\nPing: \`${client.ws.ping}\``)
+    .setDescription(`${client.emotes.success} | **The System is successfully online Saikawa!**\nServers: **\`${client.guilds.cache.size}\`**\nCached Users: **\`${allMembers.size}\`**\nVersion: **\`1.4.7\`**`)
     .setTimestamp()
     .setFooter("Boot Up Date");
    const home = await client.guilds.cache.get("874941747778707457")
