@@ -4,11 +4,22 @@ const client = require("../index")
 const status = queue => `Volume: \`${queue.volume}%\` | Filter: \`${queue.filters.join(", ") || "Off"}\` | Loop: \`${queue.repeatMode ? queue.repeatMode === 2 ? "All Queue" : "This Song" : "Off"}\` | Autoplay: \`${queue.autoplay ? "On" : "Off"}\``
 client.distube
     .on("playSong", (queue, song) => queue.textChannel.send(
-        `${client.emotes.play} | Playing \`${song.name}\` - \`${song.formattedDuration}\`\nRequested by: ${song.user}\n${status(queue)}`
+        `${client.emotes.play} | Playing \`${song.name}\``
     ))
-    .on("addSong", (queue, song) => queue.textChannel.send(
-        `${client.emotes.success} | Added ${song.name} - \`${song.formattedDuration}\` to the queue by ${song.user}`
+
+    if(queue.songs.size < 1){
+
+    new MessageEmbed()
+    client.distube.on("addSong", (queue, song) => queue.textChannel.send(
+        new MessageEmbed()
+        .setAuthor("Song Added Successfully!", "https://emoji.gg/assets/emoji/6115-dance.gif")
+        .setDescription(`**Name**: \`${song.name}\`\n**Duration**: \`${song.formattedDuration}\`\n**Volume**: \`${queue.volume}\``)
+        .setThumbnail(song.thumbnail)
     ))
+    } else {
+        return
+    }
+    client.distube
     .on("addList", (queue, playlist) => queue.textChannel.send(
         `${client.emotes.success} | Added \`${playlist.name}\` playlist (${playlist.songs.length} songs) to queue\n${status(queue)}`
     ))
@@ -23,6 +34,6 @@ client.distube
         channel.send(`${client.emotes.error} | An error encountered: ${e}`)
         console.error(e)
     })
-    .on("empty", channel => channel.send("Voice channel is empty! Leaving the channel..."))
+    .on("empty", channel => channel.send(`${client.emotes.loading} | Voice channel is empty! I will go to play with Saikawa`))
     .on("searchNoResult", message => message.channel.send(`${client.emotes.error} | No result found!`))
-    .on("finish", queue => queue.textChannel.send("Finished!"))
+    .on("finish", queue => queue.textChannel.send(`${client.emotes.stop} | Yay the queue is empty! Time to go play...`))
