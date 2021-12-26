@@ -54,7 +54,7 @@ run: async (client, message, args) => {
         .setDescription(`**\`off\`**: Turns off Loop\n**\`song\`**: Turns on Loop & set it to song\n**\`queue\`**: Turns on Loop & set it to queue`);
     try{
         let mode = null
-        if(agrs[0] === undefined)args[0] = "empty"
+        if(args[0] === undefined)args[0] = "empty"
         switch (args[0].toLowerCase()) {
             case "off":
                 mode = 0
