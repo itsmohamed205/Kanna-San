@@ -11,11 +11,14 @@ client.distube
     client.distube.on("addSong", (queue, song) => {
         
         if(queue.songs.length <= 1){
-        queue.textChannel.send(
-        new MessageEmbed()
-        .setAuthor("Song Added Successfully!", "https://emoji.gg/assets/emoji/6115-dance.gif")
-        .setDescription(`**Name**: \`${song.name}\`\n**Duration**: \`${song.formattedDuration}\`\n**Volume**: \`${queue.volume}\``)
-        .setThumbnail(song.thumbnail)
+            cosnt addembed = new MessageEmbed()
+            .setAuthor("Song Added Successfully!", "https://emoji.gg/assets/emoji/6115-dance.gif")
+            .setDescription(`**Name**: \`${song.name}\`\n**Duration**: \`${song.formattedDuration}\`\n**Volume**: \`${queue.volume}\``)
+            .setThumbnail(song.thumbnail)        
+            queue.textChannel.send({
+                embeds: [addembed]
+            }
+        
     )
     } else {
         return
