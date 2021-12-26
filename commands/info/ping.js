@@ -7,6 +7,7 @@ module.exports = {
     permissions : '', 
     description: 'Shows Bot ping',
     usage: '',
+    cooldown: 3,
     
 run: (client, message, args) => {
 

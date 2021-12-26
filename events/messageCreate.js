@@ -1,6 +1,7 @@
 const { MessageEmbed } = require("discord.js")
 const client = require("../index");
 const { onCoolDown } = require("../fc");
+const ms = require("ms")
 client.on("messageCreate", async (message) => {
   if(!message.guild)return
   let prefix;
@@ -26,7 +27,7 @@ let perms = new MessageEmbed()
   
       if (onCoolDown(message, command)) {
       let cool = new MessageEmbed()
-      .setDescription(`${client.emotes.stop} | Tohru taught me spamming is bad, Please wait ${onCoolDown(message, command)} second(s)`)
+      .setDescription(`${client.emotes.stop} | Tohru taught me spamming is bad, Please wait ${ms(${onCoolDown(message, command)})}`)
      .setColor(client.config.embed);
       return message.channel.send({embeds : [cool]})
   }
