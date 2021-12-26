@@ -27,7 +27,7 @@ let perms = new MessageEmbed()
   
       if (onCoolDown(message, command)) {
       let cool = new MessageEmbed()
-      .setDescription(`${client.emotes.stop} | Tohru taught me spamming is bad, Please wait ${ms(nCoolDown(message, command))}`)
+      .setDescription(`${client.emotes.stop} | Tohru taught me spamming is bad, Please wait ${ms(onCoolDown(message, command))}`)
      .setColor(client.config.embed);
       return message.channel.send({embeds : [cool]})
   }
