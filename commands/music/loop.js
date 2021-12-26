@@ -92,4 +92,5 @@ run: async (client, message, args) => {
                 embeds: [novol],
                 components: [buttons]
             })
+}} catch (e) {ErrorMessage(message, e)}
 }}
