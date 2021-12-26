@@ -11,8 +11,8 @@ client.distube
 
     new MessageEmbed()
     client.distube.on("addSong", (queue, song) => {
-        let queues = client.distube.getQueue(message)
-        if(queues.songs.size < 1){
+        
+        if(queue.songs.size < 1){
         queue.textChannel.send(
         new MessageEmbed()
         .setAuthor("Song Added Successfully!", "https://emoji.gg/assets/emoji/6115-dance.gif")
