@@ -7,18 +7,22 @@ client.distube
         `${client.emotes.play} | Playing \`${song.name}\``
     ))
 
-    if(queue.songs.size < 1){
+    
 
     new MessageEmbed()
-    client.distube.on("addSong", (queue, song) => queue.textChannel.send(
+    client.distube.on("addSong", (queue, song) => {
+        let queues = client.distube.getQueue(message)
+        if(queues.songs.size < 1){
+        queue.textChannel.send(
         new MessageEmbed()
         .setAuthor("Song Added Successfully!", "https://emoji.gg/assets/emoji/6115-dance.gif")
         .setDescription(`**Name**: \`${song.name}\`\n**Duration**: \`${song.formattedDuration}\`\n**Volume**: \`${queue.volume}\``)
         .setThumbnail(song.thumbnail)
-    ))
+    )
     } else {
         return
     }
+})
     client.distube
     .on("addList", (queue, playlist) => queue.textChannel.send(
         `${client.emotes.success} | Added \`${playlist.name}\` playlist (${playlist.songs.length} songs) to queue\n${status(queue)}`
