@@ -53,7 +53,7 @@ let volumereply;
         components: [buttons]
     })
 
-}}
+
         const collector = await volumereply.createMessageComponentCollector({
             componentType: 'BUTTON',
             time: 180000
@@ -218,3 +218,4 @@ let volumereply;
             }
         })
     
+    }}
