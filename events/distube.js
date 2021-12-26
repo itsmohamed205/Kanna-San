@@ -41,4 +41,4 @@ client.distube
     })
     .on("empty", channel => channel.send(`${client.emotes.loading} | Voice channel is empty! I will go to play with Saikawa`))
     .on("searchNoResult", message => message.channel.send(`${client.emotes.error} | No result found!`))
-    .on("finish", queue => queue.textChannel.send(`${client.emotes.stop} | Yay the queue is empty! Time to go play...`))
+    .on("finish", queue => queue.textChannel.send(`${client.emotes.stop} | Yay the queue is empty! Time to go sleep...`))
