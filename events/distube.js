@@ -8,8 +8,6 @@ client.distube
     ))
 
     
-
-    new MessageEmbed()
     client.distube.on("addSong", (queue, song) => {
         
         if(queue.songs.size < 1){
