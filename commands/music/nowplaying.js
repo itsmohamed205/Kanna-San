@@ -1,5 +1,5 @@
 const {ErrorMessage} = require("../../fc");
-const {MessageEmbed} = require("discord.js")
+const {MessageEmbed, MessageActionRow, MessageButton} = require("discord.js")
 
 module.exports = {
 name: "nowplaying",
