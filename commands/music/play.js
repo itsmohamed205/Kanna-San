@@ -69,7 +69,7 @@ module.exports = {
             }
             if (string.includes("https://open.spotify.com")) {
                 const queue = await client.distube.getQueue(message)
-                queue.songs[queue.songs.size - 1].source = "spotify"
+                queue.songs[queue.songs.length - 1].source = "spotify"
             }
         } catch (e) {
             ErrorMessage(message, e)

@@ -10,7 +10,7 @@ client.distube
     
     client.distube.on("addSong", (queue, song) => {
         
-        if(queue.songs.size < 1){
+        if(queue.songs.length <= 1){
         queue.textChannel.send(
         new MessageEmbed()
         .setAuthor("Song Added Successfully!", "https://emoji.gg/assets/emoji/6115-dance.gif")
