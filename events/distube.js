@@ -10,7 +10,7 @@ client.distube
     
     client.distube.on("addSong", (queue, song) => {
         
-        if(queue.songs.length <= 1){
+        if(queue.songs.length <= 2){
             const addembed = new MessageEmbed()
             .setAuthor("Song Added Successfully!", "https://emoji.gg/assets/emoji/6115-dance.gif")
             .setDescription(`**Name**: \`${song.name}\`\n**Duration**: \`${song.formattedDuration}\`\n**Volume**: \`${queue.volume}\``)
