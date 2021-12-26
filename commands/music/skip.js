@@ -60,7 +60,8 @@ module.exports = {
             const endoflist = new MessageEmbed()
             .setDescription(`${client.emotes.error} | There is no more songs to skip to`)
             .setColor(client.config.embed);
-            if(queue.songs.size === 1)return message.channel.send({embeds: [endoflist]})
+            console.log(queue.songs.size)
+            if(queue.songs.size <= 1)return message.channel.send({embeds: [endoflist]})
             const song = queue.skip()
 
             const done = new MessageEmbed()
