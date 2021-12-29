@@ -86,7 +86,7 @@ const novol = new MessageEmbed()
         iconURL: "https://emoji.gg/assets/emoji/7670-musicbeat.gif", 
         URL: queue.songs[0].url
     })
-    .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\nDuration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}`);
+    .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\n**Duration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}**Volume**: \`${queue.volume}\``);
 let volumereply;
 
     volumereply = await message.channel.send({
@@ -154,7 +154,7 @@ let volumereply;
                         iconURL: "https://emoji.gg/assets/emoji/7670-musicbeat.gif", 
                         URL: queue.songs[0].url
                     })
-                    .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\nDuration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}`);
+                    .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\n**Duration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}\n**Volume**: \`${queuebutton.volume}\``);
                  try {
                         button.update({
                             embeds: [novole],
@@ -182,7 +182,7 @@ let volumereply;
                         name: "Now Playing Song Details", 
                         iconURL: "https://emoji.gg/assets/emoji/7670-musicbeat.gif", 
                         URL: queue.songs[0].url
-                    }) .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\nDuration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}`);
+                    }) .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\n**Duration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}\n**Volume**: \`${queuebutton.volume}\``);
                  try {
                         button.update({
                             embeds: [novola],
@@ -206,7 +206,7 @@ let volumereply;
                         name: "Now Playing Song Details", 
                         iconURL: "https://emoji.gg/assets/emoji/7670-musicbeat.gif", 
                         URL: queue.songs[0].url
-                    }) .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\nDuration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}`);
+                    }) .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\n**Duration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}\n**Volume**: \`${queuebutton.volume}\``);
                      try {
                         button.update({
                             embeds: [novelem],
@@ -231,7 +231,7 @@ let volumereply;
                         iconURL: "https://emoji.gg/assets/emoji/7670-musicbeat.gif", 
                         URL: queue.songs[0].url
                     })
-                    .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\nDuration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}`);
+                    .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\n**Duration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}\n**Volume**: \`${queuebutton.volume}\``);
                   try {
                         button.update({
                             embeds: [hii],
@@ -266,7 +266,7 @@ let volumereply;
                         iconURL: "https://emoji.gg/assets/emoji/7670-musicbeat.gif", 
                         URL: queue.songs[0].url
                     })
-                    .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\nDuration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}`);
+                    .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\n**Duration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}\n**Volume**: \`${queuebutton.volume}\``);
                  try {
                 volumereply.edit({
                     embeds: [ende],

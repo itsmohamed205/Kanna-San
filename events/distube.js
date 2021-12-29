@@ -9,13 +9,19 @@ client.distube
 
     
     client.distube.on("addSong", (queue, song) => {
+        let source
+if (song.source === "youtube") {
+    source = "<:YouTube:914836593615970364> YouTube";
+} else {
+    source = "<:SpotifyLogo:914834257640304650> Spotify"
+}
         const addembed = new MessageEmbed()
             .setAuthor(
                 {
                name: "Song Added Successfully!"
             }
                )
-            .setDescription(`**Name**: \`${song.name}\`\n**Source: [${song.source}](${song.url})`)
+            .setDescription(`**Name**: \`${song.name}\`\n**Source**: [${source}](${song.url})`)
             .setFooter(`Duration: ${song.formattedDuration}`)
             .setThumbnail(song.thumbnail)        
             queue.textChannel.send({
