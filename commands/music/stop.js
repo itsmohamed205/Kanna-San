@@ -5,7 +5,7 @@ const { joinVoiceChannel } = require('@discordjs/voice');
 module.exports = {
     name: "stop",
     aliases: ["leave", "disconnect"],
-    cooldown: 1,
+    cooldown: 2,
     description: "stops the bot",
     permissions: [],
 
@@ -40,7 +40,7 @@ run: async (client, message, args) => {
         if (!queue) return message.channel.send({ embeds: [noqu] })
         queue.stop()
         const done = new MessageEmbed()
-        .setDescription(`${client.emotes.stop} | Tohru has just cleared the queue as you requested`)
+        .setDescription(`${client.emotes.stop} | Woah... We finished before i thought we would. Time for a nap`)
         .setColor(client.config.embed);
         message.channel.send({ embeds: [done] })
 } catch (e) {ErrorMessage(message, e)}

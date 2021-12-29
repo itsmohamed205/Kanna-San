@@ -11,7 +11,7 @@ const {
 module.exports = {
     name: "play",
     aliases: ["p"],
-    cooldown: 3,
+    cooldown: 2,
     inVoiceChannel: true,
     run: async (client, message, args) => {
         try {
@@ -67,7 +67,7 @@ module.exports = {
                     embeds: [fetcherror]
                 })
             }
-            if (string.includes("https://open.spotify.com")) {
+            if (string.includes("spotify.com")) {
                 const queue = await client.distube.getQueue(message)
                 queue.songs[queue.songs.length - 1].source = "spotify"
             }

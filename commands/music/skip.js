@@ -60,12 +60,12 @@ module.exports = {
             const endoflist = new MessageEmbed()
             .setDescription(`${client.emotes.error} | There is no more songs to skip to`)
             .setColor(client.config.embed);
-            console.log(queue.songs.size)
+            
             if(queue.songs.length <= 1)return message.channel.send({embeds: [endoflist]})
             const song = queue.skip()
 
             const done = new MessageEmbed()
-                .setDescription(`${client.emotes.success} | Song Skippped, Kobayashi helped with that`)
+                .setDescription(`${client.emotes.success} | Song skippped as requested`)
                 .setColor(client.config.embed);
             message.channel.send({
                 embeds: [done]

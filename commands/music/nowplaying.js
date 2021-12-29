@@ -81,8 +81,8 @@ const channelvc = await message.guild.channels.cache.get(member.voice.channelId)
 const novol = new MessageEmbed()
     .setColor(client.config.embed)
     .setThumbnail(queue.songs[0].thumbnail)
-    .setAuthor(queue.songs[0].name, "https://emoji.gg/assets/emoji/7670-musicbeat.gif", queue.songs[0].url)
-    .setDescription(`Current Queue Volume is \`${queue.volume}\` ${client.emotes.play} For \`${channelvc.name}\`\nDuration: **\`${queue.songs[0].formattedDuration}\`**\nSource: **${source}**`);
+    .setAuthor("Now Playing Song Details", "https://emoji.gg/assets/emoji/7670-musicbeat.gif")
+    .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\nDuration: **\`${queue.songs[0].formattedDuration}\`**\nSource: **[${source}](${queue.songs[0].url})**`);
 let volumereply;
 
     volumereply = await message.channel.send({

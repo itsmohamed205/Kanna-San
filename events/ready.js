@@ -5,8 +5,8 @@ client.on("ready", async () => {
   
   const botactivities = [
     {
-text: 'Kanna Rain Dance 4K',
-type: "STREAMING",
+text: 'Tohru & Elma compete',
+type: "WATCHING",
 URL: "https://discord.io/anami"
     },
     {
@@ -26,19 +26,9 @@ url: "https://discord.io/anami"
     },
     {
 text: `with ${client.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0)} users`,
-type: "STREAMING",
+type: "PLAYING",
 URL: "https://discord.io/anami"
     },
-    {
-text: `https://discord.io/anami`,
-type: "STREAMING",
-URL: "https://discord.io/anami"
-    },
-    {
-      text: "ping for help",
-      type: "PLAYING",
-      URL: "https://discord.io/anami"
-    }
 ];
 console.log(`${client.user.tag} Is Online Saikawa :)`)
   let allMembers = new Set();

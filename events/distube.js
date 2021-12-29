@@ -10,24 +10,23 @@ client.distube
     
     client.distube.on("addSong", (queue, song) => {
         
-        if(queue.songs.length <= 2){
-            const addembed = new MessageEmbed()
+        if(queue.songs.length <= 0 || queue.songs.length === undefined){
+            return
+        
+    )
+    } else {
+        const addembed = new MessageEmbed()
             .setAuthor(
                 {
-               name: "Song Added Successfully!",
-               iconURL: "https://emoji.gg/assets/emoji/6115-dance.gif", 
-               url: song.url
+               name: "Song Added Successfully!"
             }
                )
-            .setDescription(`**Name**: \`${song.name}\`\n**Duration**: \`${song.formattedDuration}\`\n**Volume**: \`${queue.volume}\``)
+            .setDescription(`**Name**: \`${song.name}\`\n**Source: [${song.source}](${song.url})`)
+            .setFooter(`Duration: ${song.formattedDuration}`)
             .setThumbnail(song.thumbnail)        
             queue.textChannel.send({
                 embeds: [addembed]
             }
-        
-    )
-    } else {
-        return
     }
 })
     client.distube

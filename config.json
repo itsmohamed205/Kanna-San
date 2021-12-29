@@ -7,9 +7,12 @@
   "emoji": {
         "play": "<a:loading:891330834357948477>",
         "stop": "<:sleep:914643320721010718>",
-        "queue": "📄",
         "success": "<:yay:914645379415420998>",
-        "repeat": "🔁",
-        "error": "<:annoyed:914641595293376554>"
+        "error": "<:Loli_kanna_ok:915408694420856853>",
+        "button1": "",
+        "button2": "",
+        "button3": "",
+        "button4": "",
+        "button5": ""
     }
 }

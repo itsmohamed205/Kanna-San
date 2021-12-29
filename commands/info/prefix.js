@@ -6,7 +6,7 @@ const { ErrorMessage } = require("../../fc")
 module.exports = {
     name: "prefix",
     description: "changes the server prefix for the bot",
-    cooldown: 30,
+    cooldown: 20,
     permissions: ["ADMINISTRATOR"],
     aliases: ["No aliases"],
 
