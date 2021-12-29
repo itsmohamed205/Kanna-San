@@ -49,25 +49,25 @@ run: async (client, message, args) => {
     new MessageButton()
     .setStyle("SUCCESS")
     .setCustomId("volumeminus")
-    .setEmoji("915408576376348702")
+    .setEmoji("915408694420856853")
     .setLabel("-10"),
 
     new MessageButton()
     .setStyle("SUCCESS")
     .setCustomId("volumeplus")
-    .setEmoji("915408576376348702")
+    .setEmoji("915408694420856853")
     .setLabel("+10"),
 
     new MessageButton()
     .setStyle("SUCCESS")
     .setCustomId("volumemute")
-    .setEmoji("915408576376348702")
+    .setEmoji("915408694420856853")
     .setLabel("Mute"),
 
     new MessageButton()
     .setStyle("SUCCESS")
     .setCustomId("volumeopen")
-    .setEmoji("915408576376348702")
+    .setEmoji("915408694420856853")
     .setLabel("Max")
 )
 let source
@@ -81,8 +81,12 @@ const channelvc = await message.guild.channels.cache.get(member.voice.channelId)
 const novol = new MessageEmbed()
     .setColor(client.config.embed)
     .setThumbnail(queue.songs[0].thumbnail)
-    .setAuthor("Now Playing Song Details", "https://emoji.gg/assets/emoji/7670-musicbeat.gif")
-    .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\nDuration: **\`${queue.songs[0].formattedDuration}\`**\nSource: **[${source}](${queue.songs[0].url})**`);
+    .setAuthor({
+        name: "Now Playing Song Details", 
+        iconURL: "https://emoji.gg/assets/emoji/7670-musicbeat.gif", 
+        URL: queue.songs[0].url
+    })
+    .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\nDuration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}`);
 let volumereply;
 
     volumereply = await message.channel.send({
@@ -101,25 +105,25 @@ let volumereply;
                     new MessageButton()
                     .setStyle("SUCCESS")
                     .setCustomId("volumeminus")
-                    .setEmoji("915408576376348702")
+                    .setEmoji("915408694420856853")
                     .setLabel("-10"),
 
                     new MessageButton()
                     .setStyle("SUCCESS")
                     .setCustomId("volumeplus")
-                    .setEmoji("915408576376348702")
+                    .setEmoji("915408694420856853")
                     .setLabel("+10"),
 
                     new MessageButton()
                     .setStyle("SUCCESS")
                     .setCustomId("volumemute")
-                    .setEmoji("915408576376348702")
+                    .setEmoji("915408694420856853")
                     .setLabel("Mute"),
 
                     new MessageButton()
                     .setStyle("SUCCESS")
                     .setCustomId("volumeopen")
-                    .setEmoji("915408576376348702")
+                    .setEmoji("915408694420856853")
                     .setLabel("Max")
                 )
                 const msg = await button.channel.messages.fetch(button.message.id);
@@ -143,11 +147,15 @@ let volumereply;
                     }
                     const channelvc = await message.guild.channels.cache.get(member.voice.channelId)
                     const novole = new MessageEmbed()
-                        .setColor(client.config.embed)
-                        .setThumbnail(queuebutton.songs[0].thumbnail)
-                        .setAuthor(queuebutton.songs[0].name, "https://emoji.gg/assets/emoji/7670-musicbeat.gif", queuebutton.songs[0].url)
-                        .setDescription(`Current Queue Volume is \`${queuebutton.volume}\` ${client.emotes.play} For \`${channelvc.name}\`\nDuration: **\`${queuebutton.songs[0].formattedDuration}\`**\nSource: **${source}**`);
-                    try {
+                    .setColor(client.config.embed)
+                    .setThumbnail(queue.songs[0].thumbnail)
+                    .setAuthor({
+                        name: "Now Playing Song Details", 
+                        iconURL: "https://emoji.gg/assets/emoji/7670-musicbeat.gif", 
+                        URL: queue.songs[0].url
+                    })
+                    .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\nDuration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}`);
+                 try {
                         button.update({
                             embeds: [novole],
                             components: [buttonsnew]
@@ -168,11 +176,14 @@ let volumereply;
                     }
                     const channelvc = await message.guild.channels.cache.get(member.voice.channelId)
                     const novola = new MessageEmbed()
-                        .setColor(client.config.embed)
-                        .setThumbnail(queuebutton.songs[0].thumbnail)
-                        .setAuthor(queuebutton.songs[0].name, "https://emoji.gg/assets/emoji/7670-musicbeat.gif", queuebutton.songs[0].url)
-                        .setDescription(`Current Queue Volume is \`${queuebutton.volume}\` ${client.emotes.play} For \`${channelvc.name}\`\nDuration: **\`${queuebutton.songs[0].formattedDuration}\`**\nSource: **${source}**`);
-                    try {
+                    .setColor(client.config.embed)
+                    .setThumbnail(queue.songs[0].thumbnail)
+                    .setAuthor({
+                        name: "Now Playing Song Details", 
+                        iconURL: "https://emoji.gg/assets/emoji/7670-musicbeat.gif", 
+                        URL: queue.songs[0].url
+                    }) .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\nDuration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}`);
+                 try {
                         button.update({
                             embeds: [novola],
                             components: [buttonsnew]
@@ -189,11 +200,14 @@ let volumereply;
                     }
                     const channelvc = await message.guild.channels.cache.get(member.voice.channelId)
                     const novelem = new MessageEmbed()
-                        .setColor(client.config.embed)
-                        .setThumbnail(queuebutton.songs[0].thumbnail)
-                        .setAuthor(queuebutton.songs[0].name, "https://emoji.gg/assets/emoji/7670-musicbeat.gif", queuebutton.songs[0].url)
-                        .setDescription(`Current Queue Volume is \`${queuebutton.volume}\` ${client.emotes.play} For \`${channelvc.name}\`\nDuration: **\`${queuebutton.songs[0].formattedDuration}\`**\nSource: **${source}**`);
-                    try {
+                    .setColor(client.config.embed)
+                    .setThumbnail(queue.songs[0].thumbnail)
+                    .setAuthor({
+                        name: "Now Playing Song Details", 
+                        iconURL: "https://emoji.gg/assets/emoji/7670-musicbeat.gif", 
+                        URL: queue.songs[0].url
+                    }) .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\nDuration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}`);
+                     try {
                         button.update({
                             embeds: [novelem],
                             components: [buttonsnew]
@@ -210,11 +224,15 @@ let volumereply;
                     }
                     const channelvc = await message.guild.channels.cache.get(member.voice.channelId)
                     const hii = new MessageEmbed()
-                        .setColor(client.config.embed)
-                        .setThumbnail(queuebutton.songs[0].thumbnail)
-                        .setAuthor(queuebutton.songs[0].name, "https://emoji.gg/assets/emoji/7670-musicbeat.gif", queuebutton.songs[0].url)
-                        .setDescription(`Current Queue Volume is \`${queuebutton.volume}\` ${client.emotes.play} For \`${channelvc.name}\`\nDuration: **\`${queuebutton.songs[0].formattedDuration}\`**\nSource: **${source}**`);
-                    try {
+                    .setColor(client.config.embed)
+                    .setThumbnail(queue.songs[0].thumbnail)
+                    .setAuthor({
+                        name: "Now Playing Song Details", 
+                        iconURL: "https://emoji.gg/assets/emoji/7670-musicbeat.gif", 
+                        URL: queue.songs[0].url
+                    })
+                    .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\nDuration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}`);
+                  try {
                         button.update({
                             embeds: [hii],
                             components: [buttonsnew]
@@ -240,12 +258,16 @@ let volumereply;
                 source = "<:SpotifyLogo:914834257640304650> Spotify"
             }
             const ende = new MessageEmbed()
-                .setColor(client.config.embed)
                 .setFooter("Expired Queue Info", "https://emoji.gg/assets/emoji/3786_KannaOOF.gif")
-                .setThumbnail(queuebutton.songs[0].thumbnail)
-                .setAuthor(queuebutton.songs[0].name, "https://emoji.gg/assets/emoji/9237_MikuMusic.png", queuebutton.songs[0].url)
-                .setDescription(`Current Queue Volume is \`${queuebutton.volume}\` ${client.emotes.play} For \`${channelvc.name}\`\nDuration: **\`${queuebutton.songs[0].formattedDuration}\`**\nSource: **${source}**`);
-            try {
+                .setColor(client.config.embed)
+                    .setThumbnail(queue.songs[0].thumbnail)
+                    .setAuthor({
+                        name: "Now Playing Song Details", 
+                        iconURL: "https://emoji.gg/assets/emoji/7670-musicbeat.gif", 
+                        URL: queue.songs[0].url
+                    })
+                    .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\nDuration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}`);
+                 try {
                 volumereply.edit({
                     embeds: [ende],
                     components: []

@@ -50,8 +50,7 @@ run: async (client, message, args) => {
 
         const helpl = new MessageEmbed()
         .setColor(client.config.embed)
-        .setAuthor("Loop Modes List", "https://emoji.gg/assets/emoji/7670-musicbeat.gif")
-        .setDescription(`**\`off\`**: Turns off Loop\n**\`song\`**: Turns on Loop & set it to song\n**\`queue\`**: Turns on Loop & set it to queue`);
+        .setDescription(`Supported Loop modes:\n**\`song\`**: set loop mode to song\n**\`queue\`**: set mode loop mode to queue\nTo disable the loop mode use \`off\``);
     try{
         let mode = null
         if(args[0] === undefined)args[0] = "empty"

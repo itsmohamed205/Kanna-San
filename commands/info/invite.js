@@ -4,10 +4,8 @@ const client = require("../../index")
 module.exports = {
   name: "invite",
   description: "Bot invite link",
-  usage: "",
   aliases: ["in"],
   cooldown: "1",
-  categories: "info",
   
 run: (client, message, args) => {
   try{
