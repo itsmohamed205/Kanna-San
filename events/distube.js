@@ -9,10 +9,6 @@ client.distube
 
     
     client.distube.on("addSong", (queue, song) => {
-        
-        if(queue.songs.length <= 0 || queue.songs.length === undefined){
-            return 
-} else {
         const addembed = new MessageEmbed()
             .setAuthor(
                 {
@@ -25,7 +21,6 @@ client.distube
             queue.textChannel.send({
                 embeds: [addembed]
             })
-    }
 })
     client.distube
     .on("addList", (queue, playlist) => queue.textChannel.send(

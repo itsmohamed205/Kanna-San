@@ -9,6 +9,7 @@ let {OP} = require("opmongo");
 //console.log(SpotifyPlugin)
 const music = new DisTube(client, {
     emitNewSongOnly: true,
+    emitAddSongWhenCreatingQueue: false,
     plugins: [new SpotifyPlugin()]
 })
 
