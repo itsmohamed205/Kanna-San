@@ -86,7 +86,7 @@ const novol = new MessageEmbed()
         iconURL: "https://emoji.gg/assets/emoji/7670-musicbeat.gif", 
         URL: queue.songs[0].url
     })
-    .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\n**Duration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}**Volume**: \`${queue.volume}\``);
+    .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\n**Duration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}\n**Volume**: \`${queue.volume}\``);
 let volumereply;
 
     volumereply = await message.channel.send({
