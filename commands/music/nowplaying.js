@@ -194,11 +194,10 @@ let volumereply;
                         return ErrorMessage(message, t)
                     }
                 } else if (button.customId === "pausequeue") {
-                    if(!queuebutton.pause) {
+                    try{
                         await queuebutton.pause()
-                    } else {
-                        return
-                    }
+                    } catch (e) {return}
+
                     if (queuebutton.songs[0].source === "youtube") {
                         source = "<:YouTube:914836593615970364> YouTube";
                     } else {
@@ -221,12 +220,10 @@ let volumereply;
                     } catch (t) {
                         return ErrorMessage(message, t)
                     }
-                } else if (button.customId === "resumequeue") {
-                    if(queuebutton.pause) {
-                        await queuebutton.resume()
-                    } else {
-                        return
-                    }
+                } else if(button.customId === "resumequeue") {
+                    try {
+                     await queuebutton.resume()
+                    } catch (e) {return}
                     if (queuebutton.songs[0].source === "youtube") {
                         source = "<:YouTube:914836593615970364> YouTube";
                     } else {
