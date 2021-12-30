@@ -49,26 +49,27 @@ run: async (client, message, args) => {
     new MessageButton()
     .setStyle("SUCCESS")
     .setCustomId("volumeminus")
-    .setEmoji("915408694420856853")
-    .setLabel("-10"),
+    .setEmoji("915408694420856853"),
+
+    new MessageButton()
+    .setStyle("SUCCESS")
+    .setCustomId("pausequeue")
+    .setEmoji("915408694420856853"),
+
+    new MessageButton()
+    .setStyle("SUCCESS")
+    .setCustomId("resumequeue")
+    .setEmoji("915408694420856853"),
+
+    new MessageButton()
+    .setStyle("SUCCESS")
+    .setCustomId("loopsong")
+    .setEmoji("915408694420856853"),
 
     new MessageButton()
     .setStyle("SUCCESS")
     .setCustomId("volumeplus")
     .setEmoji("915408694420856853")
-    .setLabel("+10"),
-
-    new MessageButton()
-    .setStyle("SUCCESS")
-    .setCustomId("volumemute")
-    .setEmoji("915408694420856853")
-    .setLabel("Mute"),
-
-    new MessageButton()
-    .setStyle("SUCCESS")
-    .setCustomId("volumeopen")
-    .setEmoji("915408694420856853")
-    .setLabel("Max")
 )
 let source
 if (queue.songs[0].source === "youtube") {
@@ -103,28 +104,29 @@ let volumereply;
             try {
                 const buttonsnew = new MessageActionRow().addComponents(
                     new MessageButton()
-                    .setStyle("SUCCESS")
-                    .setCustomId("volumeminus")
-                    .setEmoji("915408694420856853")
-                    .setLabel("-10"),
+    .setStyle("SUCCESS")
+    .setCustomId("volumeminus")
+    .setEmoji("915408694420856853"),
 
-                    new MessageButton()
-                    .setStyle("SUCCESS")
-                    .setCustomId("volumeplus")
-                    .setEmoji("915408694420856853")
-                    .setLabel("+10"),
+    new MessageButton()
+    .setStyle("SUCCESS")
+    .setCustomId("pausequeue")
+    .setEmoji("915408694420856853"),
 
-                    new MessageButton()
-                    .setStyle("SUCCESS")
-                    .setCustomId("volumemute")
-                    .setEmoji("915408694420856853")
-                    .setLabel("Mute"),
+    new MessageButton()
+    .setStyle("SUCCESS")
+    .setCustomId("resumequeue")
+    .setEmoji("915408694420856853"),
 
-                    new MessageButton()
-                    .setStyle("SUCCESS")
-                    .setCustomId("volumeopen")
-                    .setEmoji("915408694420856853")
-                    .setLabel("Max")
+    new MessageButton()
+    .setStyle("SUCCESS")
+    .setCustomId("loopsong")
+    .setEmoji("915408694420856853"),
+
+    new MessageButton()
+    .setStyle("SUCCESS")
+    .setCustomId("volumeplus")
+    .setEmoji("915408694420856853")
                 )
                 const msg = await button.channel.messages.fetch(button.message.id);
                 if (msg.id !== volumereply.id) return
@@ -191,8 +193,12 @@ let volumereply;
                     } catch (t) {
                         return ErrorMessage(message, t)
                     }
-                } else if (button.customId === "volumemute") {
-                    await queuebutton.setVolume(0)
+                } else if (button.customId === "pausequeue") {
+                    if(!queuebutton.pause) {
+                        await queuebutton.pause()
+                    } else {
+                        return
+                    }
                     if (queuebutton.songs[0].source === "youtube") {
                         source = "<:YouTube:914836593615970364> YouTube";
                     } else {
@@ -215,8 +221,42 @@ let volumereply;
                     } catch (t) {
                         return ErrorMessage(message, t)
                     }
-                } else if (button.customId === "volumeopen") {
-                    await queuebutton.setVolume(100)
+                } else if (button.customId === "resumequeue") {
+                    if(queuebutton.pause) {
+                        await queuebutton.resume()
+                    } else {
+                        return
+                    }
+                    if (queuebutton.songs[0].source === "youtube") {
+                        source = "<:YouTube:914836593615970364> YouTube";
+                    } else {
+                        source = "<:SpotifyLogo:914834257640304650> Spotify"
+                    }
+                    const channelvc = await message.guild.channels.cache.get(member.voice.channelId)
+                    const hii = new MessageEmbed()
+                    .setColor(client.config.embed)
+                    .setThumbnail(queue.songs[0].thumbnail)
+                    .setAuthor({
+                        name: "Now Playing Song Details", 
+                        iconURL: "https://emoji.gg/assets/emoji/7670-musicbeat.gif", 
+                        URL: queue.songs[0].url
+                    })
+                    .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\n**Duration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}\n**Volume**: \`${queuebutton.volume}\``);
+                  try {
+                        button.update({
+                            embeds: [hii],
+                            components: [buttonsnew]
+                        })
+                    } catch (t) {
+                        return ErrorMessage(message, t)
+                    }
+                    // DON'T FORGET TO FIX THIS PART YOU SILLY HUMAN OKAY????????????????????????
+                } else if (button.customId === "loopsong") {
+                    if(queuebutton) {
+                        return
+                    } else {
+                        return
+                    }
                     if (queuebutton.songs[0].source === "youtube") {
                         source = "<:YouTube:914836593615970364> YouTube";
                     } else {
