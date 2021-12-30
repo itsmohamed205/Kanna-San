@@ -13,16 +13,16 @@ module.exports.ErrorMessage = ErrorMessage;
 async function ErrorMessage(message, str) {
   try{
     const embed = new MessageEmbed()
-    .setColor("#2c2f33")
+    .setColor(client.config.embed)
     .setDescription(`${client.emotes.error} | **The System detected a new error Saikawa!**\nTriggered Command: **\`${message.content}\`**\nServer: **\`${message.guild.name} (ID: ${message.guild.id})\`**\nError:\n\`\`\`\n${str}\n\`\`\``)
     .setTimestamp()
     .setFooter("Error Date");
-   const home = await client.guilds.cache.get("874941747778707457")
-   const channel = await home.channels.cache.get("913203653345681438")
+   const home = await client.guilds.cache.get(client.config.channels.guild)
+   const channel = await home.channels.cache.get(client.config.channels.error)
    await channel.send({ embeds: [embed] })
    const msgreply = new MessageEmbed()
    .setDescription(`${client.emotes.error} | Gomen, Our code has detected an error and it has been reported to the developer`)
-   .setColor("#2c2f33");
+   .setColor(client.config.embed);
    message.channel.send({ embeds: [msgreply] })
   } catch (e) {console.log(e)}
 }
