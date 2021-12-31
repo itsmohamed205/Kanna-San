@@ -1,14 +1,10 @@
 const { MessageEmbed, MessageButton, MessageActionRow } = require("discord.js");
 
-//const { readdirSync } = require("fs");
-
-
 module.exports = {
   name: "help",
   aliases: ["h"],
-  cooldown : 3,
+  cooldown : 2,
   description: "Shows the bot help list",
-  usage: "[command]&[categorie]",
 
   run: async (client, message, args) => {
     
@@ -25,7 +21,7 @@ module.exports = {
 
  const help =  new MessageEmbed()
 .setColor(client.config.embed)
- .setDescription(`**Prefix**: **\`${prefix}\`**\n**Version**: **\`2.1\`**\n**Ping**: **\`${client.ws.ping}\`**\n**Servers Count**: **\`${client.guilds.cache}\`**`)
+ .setDescription(`**Prefix**: **\`${prefix}\`**\n**Version**: **\`1.21\`**\n**Ping**: **\`${client.ws.ping}\`**\n**Servers Count**: **\`${client.guilds.cache}\`**`)
     .addField("**Commands**:", "play, stop, volume, queue, help, ping, skip")
   message.channel.send({ embeds: [help], components: [buttons]})
   },
