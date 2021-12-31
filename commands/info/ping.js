@@ -14,11 +14,11 @@ try {
     setTimeout(async function () {
         const datembed = new MessageEmbed()
         .setColor(client.config.embed)
-        .setDescription(`**Latency**: ${Date.now() - message.createdTimestamp - 4000}ms\n**API Latency**: ${Math.round(client.ws.ping)}ms\n**Bot Servers**: ${client.guilds.cache.length}`)
+        .setDescription(`**Latency**: ${Date.now() - message.createdTimestamp - 5000}ms\n**API Latency**: ${Math.round(client.ws.ping)}ms`)
           try{
     msg.edit({ embeds: [datembed], content: " " })
           } catch (e) {return}
-    }, 4000)
+    }, 5000)
 
     })
 } catch (e) {
