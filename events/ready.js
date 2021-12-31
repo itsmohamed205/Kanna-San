@@ -47,12 +47,12 @@ console.log(`${client.user.tag} Is Online Saikawa :)`)
 
   try{
     const embed = new MessageEmbed()
-    .setColor("#2c2f33")
-    .setDescription(`${client.emotes.success} | **The System is successfully online Saikawa!**\nServers: **\`${client.guilds.cache.size}\`**\nCached Users: **\`${allMembers.size}\`**\nVersion: **\`1.4.7\`**`)
+    .setColor(client.config.embed)
+    .setDescription(`${client.emotes.lazy} | **The System is successfully online Saikawa!**\nServers: **\`${client.guilds.cache.size}\`**\nCached Users: **\`${allMembers.size}\``)
     .setTimestamp()
     .setFooter("Boot Up Date");
-   const home = await client.guilds.cache.get("874941747778707457")
-   const channel = await home.channels.cache.get("913203653345681438")
+   const home = await client.guilds.cache.get(client.config.channels.guild)
+   const channel = await home.channels.cache.get(client.config.channels.bootup)
    await channel.send({ embeds: [embed] })
 
   } catch (e) {console.log(e)}
