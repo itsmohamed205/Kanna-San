@@ -23,6 +23,7 @@
         "ffmpeg-static": "^4.4.0",
         "fs": "^0.0.1-security",
         "glob": "^7.1.7",
+        "@discordjs/opus": "^0.7.0",
         "libsodium-wrappers": "^0.7.9",
         "mongoose": "^5.13.2",
         "opmongo": "^1.0.0-beta"
