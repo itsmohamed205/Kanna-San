@@ -31,9 +31,9 @@ const helpbuttons = new MessageActionRow().addComponents(
 )
  const help =  new MessageEmbed()
 .setColor(client.config.embed)
- .setDescription(`**Prefix**: **\`${prefix}\`**\n**Version**: **\`1.21\`**\n**Ping**: **\`${client.ws.ping}\`**\n**Servers Count**: **\`${client.guilds.cache.size}\`**\n**__Commands__**:`)
+ .setDescription(`**Prefix**: **\`${prefix}\`**\n**Version**: **\`1.21\`**\n**Ping**: **\`${client.ws.ping}\`**\n**Servers Count**: **\`${client.guilds.cache.size}\`**`)
  .setThumbnail(client.user.avatarURL)
-    .addField("**<:MikuMusic:916690228935266336> Music**:", `\`\`\`js\n"play": Play music based on the provided text/url\n "stop": Clear the queue and leave the vc\n"volume": sets the queue volume\n"nowplaying": shows the current active song/music\n"skip": skips the song and remove it from the queue\n"pause": pause the queue\n"resume": resume the queue\n"loop": turns on the loop mode\n\`\`\``)
+    .addField("**<:MikuMusic:916690228935266336> Music**:", `\`\`\`js\n"play": Play music based on the provided text/url\n "stop": Clear the queue and leave the vc\n"volume": sets the queue volume\n"nowplaying": shows the current active song/music\n"skip": skips the song and remove it\n"pause": pause the queue\n"resume": resume the queue\n"loop": turns on the loop mode\n\`\`\``)
   let msghelp;
   msghelp = await message.channel.send({ embeds: [help], components: [helpbuttons]})
   let doneonce;
@@ -43,8 +43,9 @@ const helpbuttons = new MessageActionRow().addComponents(
     time: 15000
 });
   collector.on("collect", async button => {
+    console.log(button)
     if(button.customId === "todmhelp") {
-      if(button.user.id !== message.user.id)return button.reply({ content: "Kobayashi said only who triggered the command can use it", ephermal: true})
+      if(button.user.id !== message.author.id)return button.reply({ content: "Kobayashi said only who triggered the command can use it", ephermal: true})
       const helpdmmsg =  new MessageEmbed()
 .setColor(client.config.embed)
  .setDescription(`**Prefix**: **\`${prefix}\`**\n**Version**: **\`1.21\`**\n**Ping**: **\`${client.ws.ping}\`**\n**Servers Count**: **\`${client.guilds.cache}\`**`)
