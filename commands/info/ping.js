@@ -18,7 +18,7 @@ try {
           try{
     msg.edit({ embeds: [datembed], content: " " })
           } catch (e) {return}
-    }, 5000)
+    }, 2500)
 
     })
 } catch (e) {

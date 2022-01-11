@@ -48,7 +48,7 @@ console.log(`${client.user.tag} Is Online Saikawa :)`)
   try{
     const embed = new MessageEmbed()
     .setColor(client.config.embed)
-    .setDescription(`${client.emotes.lazy} | **The System is successfully online Saikawa!**\n**Servers**: \`${client.guilds.cache.size}\`**\n**Cached Users**: \`${allMembers.size}\``)
+    .setDescription(`${client.emotes.lazy} | **The System is successfully online Saikawa!**\n**Servers**: \`${client.guilds.cache.size}\`\n**Cached Users**: \`${allMembers.size}\``)
     .setTimestamp()
     .setFooter("Boot Up Date");
    const home = await client.guilds.cache.get(client.config.channels.guild)
