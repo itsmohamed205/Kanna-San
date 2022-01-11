@@ -4,7 +4,29 @@ const client = new Client({
     intents: 32767,
 });
 let {OP} = require("opmongo");
+const ytdl = require('ytdl-core');
+const HttpsProxyAgent = require('https-proxy-agent');
 
+const proxy = 'http://kanna:sweetie1@111.111.111.111:8080';
+const agent = HttpsProxyAgent(proxy);
+
+const stream = ytdl('https://www.youtube.com/watch?v=aqz-KE-bpKQ', {
+  requestOptions: { agent },
+});
+
+console.log('Starting Download');
+
+stream.on('data', chunk => {
+  console.log('downloaded', chunk.length);
+});
+
+stream.on('error', err => {
+  console.error(err);
+});
+
+stream.on('end', () => {
+  console.log('Finished');
+});
  const { SpotifyPlugin } = require("@distube/spotify")
 //console.log(SpotifyPlugin)
 const music = new DisTube(client, {

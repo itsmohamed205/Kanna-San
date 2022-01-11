@@ -1,4 +1,4 @@
-const ytdl = require('ytdl-core');
+/*const ytdl = require('ytdl-core');
 const HttpsProxyAgent = require('https-proxy-agent');
 
 // Remove 'user:pass@' if you don't need to authenticate to your proxy.
@@ -21,4 +21,4 @@ stream.on('error', err => {
 
 stream.on('end', () => {
   console.log('Finished');
-});
+});*/
