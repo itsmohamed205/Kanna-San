@@ -35,7 +35,7 @@ const helpbuttons = new MessageActionRow().addComponents(
     .addField("**Commands**:", "play, stop, volume, queue, help, ping, skip")
   const msghelp = await message.channel.send({ embeds: [help], components: [helpbuttons]})
   let doneonce = `false_${message.author.id}`
-  const collector = message.channel.createMessageComponentCollector({ filter, time: 15000 });
+  const collector = await msghelp.createMessageComponentCollector({ componentType: "button", time: 15000 });
   collector.on("collect", async button => {
     if(button.customId === "todmhelp") {
       if(button.user.id !== message.user.id)return button.reply({ content: "Kobayashi said only who triggered the command can use it", ephermal: true})

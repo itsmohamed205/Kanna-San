@@ -14,7 +14,7 @@ try {
     setTimeout(async function () {
         const datembed = new MessageEmbed()
         .setColor(client.config.embed)
-        .setDescription(`**Latency**: ${Date.now() - message.createdTimestamp - 5000}ms\n**API Latency**: ${Math.round(client.ws.ping)}ms`)
+        .setDescription(`**Latency**: ${Date.now() - message.createdTimestamp - 2500}ms\n**API Latency**: ${Math.round(client.ws.ping)}ms`)
           try{
     msg.edit({ embeds: [datembed], content: " " })
           } catch (e) {return}
