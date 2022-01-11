@@ -31,11 +31,17 @@ const helpbuttons = new MessageActionRow().addComponents(
 )
  const help =  new MessageEmbed()
 .setColor(client.config.embed)
- .setDescription(`**Prefix**: **\`${prefix}\`**\n**Version**: **\`1.21\`**\n**Ping**: **\`${client.ws.ping}\`**\n**Servers Count**: **\`${client.guilds.cache}\`**`)
-    .addField("**Commands**:", "play, stop, volume, queue, help, ping, skip")
-  const msghelp = await message.channel.send({ embeds: [help], components: [helpbuttons]})
-  let doneonce = `false_${message.author.id}`
-  const collector = await msghelp.createMessageComponentCollector({ componentType: "button", time: 15000 });
+ .setDescription(`**Prefix**: **\`${prefix}\`**\n**Version**: **\`1.21\`**\n**Ping**: **\`${client.ws.ping}\`**\n**Servers Count**: **\`${client.guilds.cache.size}\`**\n**__Commands__**:`)
+ .setThumbnail(client.user.avatarURL)
+    .addField("**<:MikuMusic:916690228935266336> Music**:", `\`\`\`js\n"play": Play music based on the provided text/url\n "stop": Clear the queue and leave the vc\n"volume": sets the queue volume\n"nowplaying": shows the current active song/music\n"skip": skips the song and remove it from the queue\n"pause": pause the queue\n"resume": resume the queue\n"loop": turns on the loop mode\n\`\`\``)
+  let msghelp;
+  msghelp = await message.channel.send({ embeds: [help], components: [helpbuttons]})
+  let doneonce;
+  doneonce = `false_${message.author.id}`
+  const collector = await msghelp.createMessageComponentCollector({
+    componentType: 'BUTTON',
+    time: 15000
+});
   collector.on("collect", async button => {
     if(button.customId === "todmhelp") {
       if(button.user.id !== message.user.id)return button.reply({ content: "Kobayashi said only who triggered the command can use it", ephermal: true})
