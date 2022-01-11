@@ -3,33 +3,6 @@ const {MessageEmbed} = require("discord.js")
 
 client.on("ready", async () => {
   
-  const botactivities = [
-    {
-text: 'Tohru & Elma compete',
-type: "WATCHING",
-URL: "https://discord.io/anami"
-    },
-    {
-text: "with Saikawa",
-type: "PLAYING",
-URL: "https://discord.io/anami"
-    },
-    {
-text: "the Televison with Saikawa",
-type: "WATCHING",
-URL: "https://discord.io/anami"
-    },
-    {
-text: "to Saikawa's screams",
-type: "LISTENING",
-url: "https://discord.io/anami"
-    },
-    {
-text: `with ${client.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0)} users`,
-type: "PLAYING",
-URL: "https://discord.io/anami"
-    },
-];
 console.log(`${client.user.tag} Is Online Saikawa :)`)
   let allMembers = new Set();
   client.guilds.cache.forEach((guild) => {
@@ -59,6 +32,33 @@ console.log(`${client.user.tag} Is Online Saikawa :)`)
 
   console.log(`${client.guilds.cache.size} Servers\n` + `${client.channels.cache.size} Channels\n` + `${allMembers.size} Members`);
 setInterval(() => {
+  let botactivities = [
+    {
+text: 'Tohru & Elma compete',
+type: "WATCHING",
+URL: "https://discord.io/anami"
+    },
+    {
+text: "with Saikawa",
+type: "PLAYING",
+URL: "https://discord.io/anami"
+    },
+    {
+text: "the Televison with Saikawa",
+type: "WATCHING",
+URL: "https://discord.io/anami"
+    },
+    {
+text: "to Saikawa's screams",
+type: "LISTENING",
+url: "https://discord.io/anami"
+    },
+    {
+text: `with ${client.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0)} users`,
+type: "PLAYING",
+URL: "https://discord.io/anami"
+    },
+];
 
 const randomIndex = Math.floor(Math.random() * botactivities.length);
 
