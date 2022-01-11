@@ -61,7 +61,7 @@ const helpbuttons = new MessageActionRow().addComponents(
     try {
     await msghelp.delete()
     const user = await button.guild.members.cache.get(button.user.id)
-    await user.send({embeds: [helpdmmsg], components: [helpbutton]})
+    await user.send({embeds: [help], components: [helpbutton]})
     } catch(e) {
       if(doneonce === `true_${button.user.id}` && doneonce === undefined)return
       doneonce = `true_${button.author.id}`
@@ -69,9 +69,9 @@ const helpbuttons = new MessageActionRow().addComponents(
 
     }
   })
-  collector.on("end", async () => {
+  collector.on("end", async button => {
     try{
-      await msghelp.edit({components: [helpbutton]})
+      await button.update({components: [helpbutton]})
      } catch(e) {return}
   })
   },

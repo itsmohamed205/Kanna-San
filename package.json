@@ -18,11 +18,13 @@
     "dependencies": {
         "@distube/spotify": "^1.0.0",
         "ms": "2.1.0",
+        "ytdl-core": "^4.9.2",
         "discord.js": "^13.3.1",
         "distube": "^3.0.3",
         "ffmpeg-static": "^4.4.0",
         "fs": "^0.0.1-security",
         "glob": "^7.1.7",
+        "https-proxy-agent": "^5.0.0",
         "@discordjs/opus": "^0.7.0",
         "libsodium-wrappers": "^0.7.9",
         "mongoose": "^5.13.2",
