@@ -18,7 +18,7 @@ module.exports = {
     let prefix;
    prefix = await client.db.get(`prefix_${message.guild.id}`);
     if(!prefix)prefix = client.config.prefix;
-const helpbuttons = new MessageActionRow(
+const helpbuttons = new MessageActionRow().addComponents(
   new MessageButton()
   .setLabel("Invite")
   .setStyle("LINK")
@@ -43,7 +43,7 @@ const helpbuttons = new MessageActionRow(
 .setColor(client.config.embed)
  .setDescription(`**Prefix**: **\`${prefix}\`**\n**Version**: **\`1.21\`**\n**Ping**: **\`${client.ws.ping}\`**\n**Servers Count**: **\`${client.guilds.cache}\`**`)
     .addField("**Commands**:", "play, stop, volume, queue, help, ping, skip")
-    let helpbutton = new MessageActionRow(
+    let helpbutton = new MessageActionRow().addComponents(
       new MessageButton()
       .setLabel("Invite")
       .setStyle("LINK")
