@@ -14,16 +14,6 @@ const stream = ytdl('https://www.youtube.com/watch?v=aqz-KE-bpKQ', {
   requestOptions: { agent },
 });
 
-try{
-  const embed = new MessageEmbed()
-  .setColor(client.config.embed)
-  .setDescription(`${client.emotes.lazy} | Proxy Connected Successfully`)
- const home = await client.guilds.cache.get(client.config.channels.guild)
- const channel = await home.channels.cache.get(client.config.channels.bootup)
- await channel.send({ embeds: [embed] })
-
-} catch (e) {console.log(e)}
-
 console.log('Connected to the Proxy successfully');
 
 stream.on('data', chunk => {
