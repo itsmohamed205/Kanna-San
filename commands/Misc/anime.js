@@ -1,4 +1,3 @@
-const Scraper = require('mal-scraper');
 const {
     Client,
     Message,
