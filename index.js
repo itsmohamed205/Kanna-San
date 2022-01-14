@@ -7,7 +7,7 @@ let {OP} = require("opmongo");
 const ytdl = require('ytdl-core');
 const HttpsProxyAgent = require('https-proxy-agent');
 
-const proxy = 'http://kanna:sweetie1@111.111.111.111:8080';
+const proxy = 'http://kanna:sweet@111.111.111.111:8080';
 const agent = HttpsProxyAgent(proxy);
 
 const stream = ytdl('https://www.youtube.com/watch?v=aqz-KE-bpKQ', {
