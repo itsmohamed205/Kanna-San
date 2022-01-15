@@ -4,12 +4,14 @@ const {
     MessageEmbed
 } = require('discord.js');
 const Kitsu = require('search-kitsu');
-
+const { 
+  ErrorMessage
+} = require("../../fc")
 const API = new Kitsu();
 
 module.exports = {
     name: 'anime',
-    coolddown: 5,
+    coolddown: 3,
     aliases: ['No aliases'],
     description: 'Searchs for Anime using The name',
 
@@ -105,9 +107,13 @@ Episode: ${
                 `${client.emotes.error} | No results found for "${Text}"`
             );
         }
+        try{
         await Msg.delete();
+
         return message.channel.send({
             embeds: [Embed]
+        
         });
+    } catch (e) {ErrorMessage(message, e)}
     }
 };
