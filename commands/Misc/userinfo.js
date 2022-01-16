@@ -36,7 +36,7 @@ module.exports = {
 
         let member = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
         let stet
-        if (member !== undefined) stet = member.presence ? .status
+        if (member !== undefined) stet = member.presence?.status
 
         if (!member) {
             try {
