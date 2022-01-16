@@ -27,7 +27,7 @@ module.exports = async (client) => {
                 ...file
             };
             client.commands.set(file.name, properties);
-            file.aliases ? .forEach((alias) => {
+            file.aliases?.forEach((alias) => {
                 client.aliases.set(alias, file.name)
             })
         }
@@ -45,7 +45,7 @@ module.exports = async (client) => {
     const arrayOfSlashCommands = [];
     slashCommands.map((value) => {
         const file = require(value);
-        if (!file ? .name) return;
+        if (!file?.name) return;
         client.slashCommands.set(file.name, file);
         arrayOfSlashCommands.push(file);
     });
