@@ -57,7 +57,7 @@ module.exports = {
                 await client.distube.play(message, string)
                 const queuee = await client.distube.getQueue(message)
 
-               
+
                 queuee.setVolume(100);
             } catch (e) {
                 const fetcherror = new MessageEmbed()

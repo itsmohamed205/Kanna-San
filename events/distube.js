@@ -1,4 +1,8 @@
-const { MessageEmbed, MessageButton, MessagActionRow } = require("discord.js")
+const {
+    MessageEmbed,
+    MessageButton,
+    MessagActionRow
+} = require("discord.js")
 const client = require("../index")
 
 const status = queue => `Volume: \`${queue.volume}%\` | Filter: \`${queue.filters.join(", ") || "Off"}\` | Loop: \`${queue.repeatMode ? queue.repeatMode === 2 ? "All Queue" : "This Song" : "Off"}\` | Autoplay: \`${queue.autoplay ? "On" : "Off"}\``
@@ -7,28 +11,26 @@ client.distube
         `${client.emotes.play} | Playing \`${song.name}\``
     ))
 
-    
-    client.distube.on("addSong", (queue, song) => {
-        let source
-if (song.source === "youtube") {
-    source = "<:YouTube:914836593615970364> YouTube";
-} else {
-    source = "<:SpotifyLogo:914834257640304650> Spotify"
-}
-        const addembed = new MessageEmbed()
-            .setAuthor(
-                {
-               name: "Song Added Successfully!"
-            }
-               )
-            .setDescription(`**Name**: \`${song.name}\`\n**Source**: [${source}](${song.url})`)
-            .setFooter(`Duration: ${song.formattedDuration}`)
-            .setThumbnail(song.thumbnail)        
-            queue.textChannel.send({
-                embeds: [addembed]
-            })
+
+client.distube.on("addSong", (queue, song) => {
+    let source
+    if (song.source === "youtube") {
+        source = "<:YouTube:914836593615970364> YouTube";
+    } else {
+        source = "<:SpotifyLogo:914834257640304650> Spotify"
+    }
+    const addembed = new MessageEmbed()
+        .setAuthor({
+            name: "Song Added Successfully!"
+        })
+        .setDescription(`**Name**: \`${song.name}\`\n**Source**: [${source}](${song.url})`)
+        .setFooter(`Duration: ${song.formattedDuration}`)
+        .setThumbnail(song.thumbnail)
+    queue.textChannel.send({
+        embeds: [addembed]
+    })
 })
-    client.distube
+client.distube
     .on("addList", (queue, playlist) => queue.textChannel.send(
         `${client.emotes.success} | Added \`${playlist.name}\` playlist (${playlist.songs.length} songs) to queue\n${status(queue)}`
     ))

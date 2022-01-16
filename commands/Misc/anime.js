@@ -4,8 +4,8 @@ const {
     MessageEmbed
 } = require('discord.js');
 const Kitsu = require('search-kitsu');
-const { 
-  ErrorMessage
+const {
+    ErrorMessage
 } = require("../../fc")
 const API = new Kitsu();
 
@@ -107,13 +107,15 @@ Episode: ${
                 `${client.emotes.error} | No results found for "${Text}"`
             );
         }
-        try{
-        await Msg.delete();
+        try {
+            await Msg.delete();
 
-        return message.channel.send({
-            embeds: [Embed]
-        
-        });
-    } catch (e) {ErrorMessage(message, e)}
+            return message.channel.send({
+                embeds: [Embed]
+
+            });
+        } catch (e) {
+            ErrorMessage(message, e)
+        }
     }
 };

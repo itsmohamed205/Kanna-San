@@ -20,7 +20,7 @@ module.exports = {
 
     run: async (client, message, args) => {
         try {
-return message.channel.send("Command is locked down due to many errors");
+            return message.channel.send("Command is locked down due to many errors");
             const novc = new MessageEmbed()
                 .setDescription(`${client.emotes.error} | You are not connected to a VC`)
                 .setColor(client.config.embed);

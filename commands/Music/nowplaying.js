@@ -1,13 +1,19 @@
-const {ErrorMessage} = require("../../fc");
-const {MessageEmbed, MessageActionRow, MessageButton} = require("discord.js")
+const {
+    ErrorMessage
+} = require("../../fc");
+const {
+    MessageEmbed,
+    MessageActionRow,
+    MessageButton
+} = require("discord.js")
 
 module.exports = {
-name: "nowplaying",
-aliases: ["np", "currentsong", "cs"],
-cooldown: 3,
-inVoiceChannel: true,
-run: async (client, message, args) => {
-    const novc = new MessageEmbed()
+    name: "nowplaying",
+    aliases: ["np", "currentsong", "cs"],
+    cooldown: 3,
+    inVoiceChannel: true,
+    run: async (client, message, args) => {
+        const novc = new MessageEmbed()
             .setDescription(`${client.emotes.error} | You are not connected to a VC`)
             .setColor(client.config.embed);
 
@@ -44,56 +50,56 @@ run: async (client, message, args) => {
         if (!queue) return message.channel.send({
             embeds: [noqu]
         });
-    
-    const buttons = new MessageActionRow().addComponents(
-    new MessageButton()
-    .setStyle("SUCCESS")
-    .setCustomId("volumeminus")
-    .setEmoji("915408694420856853"),
 
-    new MessageButton()
-    .setStyle("SUCCESS")
-    .setCustomId("pausequeue")
-    .setEmoji("915408694420856853"),
+        const buttons = new MessageActionRow().addComponents(
+            new MessageButton()
+            .setStyle("SUCCESS")
+            .setCustomId("volumeminus")
+            .setEmoji("915408694420856853"),
 
-    new MessageButton()
-    .setStyle("SUCCESS")
-    .setCustomId("resumequeue")
-    .setEmoji("915408694420856853"),
+            new MessageButton()
+            .setStyle("SUCCESS")
+            .setCustomId("pausequeue")
+            .setEmoji("915408694420856853"),
 
-    new MessageButton()
-    .setStyle("SUCCESS")
-    .setCustomId("loopsong")
-    .setEmoji("915408694420856853"),
+            new MessageButton()
+            .setStyle("SUCCESS")
+            .setCustomId("resumequeue")
+            .setEmoji("915408694420856853"),
 
-    new MessageButton()
-    .setStyle("SUCCESS")
-    .setCustomId("volumeplus")
-    .setEmoji("915408694420856853")
-)
-let source
-if (queue.songs[0].source === "youtube") {
-    source = "<:YouTube:914836593615970364> YouTube";
-} else {
-    source = "<:SpotifyLogo:914834257640304650> Spotify"
-}
-console.log(queue.songs[0].name + ": " + queue.songs[0].source)
-const channelvc = await message.guild.channels.cache.get(member.voice.channelId)
-const novol = new MessageEmbed()
-    .setColor(client.config.embed)
-    .setThumbnail(queue.songs[0].thumbnail)
-    .setAuthor({
-        name: "Now Playing Song Details", 
-        iconURL: "https://emoji.gg/assets/emoji/7670-musicbeat.gif", 
-        URL: queue.songs[0].url
-    })
-    .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\n**Duration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}\n**Volume**: \`${queue.volume}\``);
-let volumereply;
+            new MessageButton()
+            .setStyle("SUCCESS")
+            .setCustomId("loopsong")
+            .setEmoji("915408694420856853"),
 
-    volumereply = await message.channel.send({
-        embeds: [novol],
-        components: [buttons]
-    })
+            new MessageButton()
+            .setStyle("SUCCESS")
+            .setCustomId("volumeplus")
+            .setEmoji("915408694420856853")
+        )
+        let source
+        if (queue.songs[0].source === "youtube") {
+            source = "<:YouTube:914836593615970364> YouTube";
+        } else {
+            source = "<:SpotifyLogo:914834257640304650> Spotify"
+        }
+        console.log(queue.songs[0].name + ": " + queue.songs[0].source)
+        const channelvc = await message.guild.channels.cache.get(member.voice.channelId)
+        const novol = new MessageEmbed()
+            .setColor(client.config.embed)
+            .setThumbnail(queue.songs[0].thumbnail)
+            .setAuthor({
+                name: "Now Playing Song Details",
+                iconURL: "https://emoji.gg/assets/emoji/7670-musicbeat.gif",
+                URL: queue.songs[0].url
+            })
+            .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\n**Duration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}\n**Volume**: \`${queue.volume}\``);
+        let volumereply;
+
+        volumereply = await message.channel.send({
+            embeds: [novol],
+            components: [buttons]
+        })
 
 
         const collector = await volumereply.createMessageComponentCollector({
@@ -104,29 +110,29 @@ let volumereply;
             try {
                 const buttonsnew = new MessageActionRow().addComponents(
                     new MessageButton()
-    .setStyle("SUCCESS")
-    .setCustomId("volumeminus")
-    .setEmoji("915408694420856853"),
+                    .setStyle("SUCCESS")
+                    .setCustomId("volumeminus")
+                    .setEmoji("915408694420856853"),
 
-    new MessageButton()
-    .setStyle("SUCCESS")
-    .setCustomId("pausequeue")
-    .setEmoji("915408694420856853"),
+                    new MessageButton()
+                    .setStyle("SUCCESS")
+                    .setCustomId("pausequeue")
+                    .setEmoji("915408694420856853"),
 
-    new MessageButton()
-    .setStyle("SUCCESS")
-    .setCustomId("resumequeue")
-    .setEmoji("915408694420856853"),
+                    new MessageButton()
+                    .setStyle("SUCCESS")
+                    .setCustomId("resumequeue")
+                    .setEmoji("915408694420856853"),
 
-    new MessageButton()
-    .setStyle("SUCCESS")
-    .setCustomId("loopsong")
-    .setEmoji("915408694420856853"),
+                    new MessageButton()
+                    .setStyle("SUCCESS")
+                    .setCustomId("loopsong")
+                    .setEmoji("915408694420856853"),
 
-    new MessageButton()
-    .setStyle("SUCCESS")
-    .setCustomId("volumeplus")
-    .setEmoji("915408694420856853")
+                    new MessageButton()
+                    .setStyle("SUCCESS")
+                    .setCustomId("volumeplus")
+                    .setEmoji("915408694420856853")
                 )
                 const msg = await button.channel.messages.fetch(button.message.id);
                 if (msg.id !== volumereply.id) return
@@ -149,15 +155,15 @@ let volumereply;
                     }
                     const channelvc = await message.guild.channels.cache.get(member.voice.channelId)
                     const novole = new MessageEmbed()
-                    .setColor(client.config.embed)
-                    .setThumbnail(queue.songs[0].thumbnail)
-                    .setAuthor({
-                        name: "Now Playing Song Details", 
-                        iconURL: "https://emoji.gg/assets/emoji/7670-musicbeat.gif", 
-                        URL: queue.songs[0].url
-                    })
-                    .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\n**Duration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}\n**Volume**: \`${queuebutton.volume}\``);
-                 try {
+                        .setColor(client.config.embed)
+                        .setThumbnail(queue.songs[0].thumbnail)
+                        .setAuthor({
+                            name: "Now Playing Song Details",
+                            iconURL: "https://emoji.gg/assets/emoji/7670-musicbeat.gif",
+                            URL: queue.songs[0].url
+                        })
+                        .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\n**Duration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}\n**Volume**: \`${queuebutton.volume}\``);
+                    try {
                         button.update({
                             embeds: [novole],
                             components: [buttonsnew]
@@ -178,14 +184,14 @@ let volumereply;
                     }
                     const channelvc = await message.guild.channels.cache.get(member.voice.channelId)
                     const novola = new MessageEmbed()
-                    .setColor(client.config.embed)
-                    .setThumbnail(queue.songs[0].thumbnail)
-                    .setAuthor({
-                        name: "Now Playing Song Details", 
-                        iconURL: "https://emoji.gg/assets/emoji/7670-musicbeat.gif", 
-                        URL: queue.songs[0].url
-                    }) .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\n**Duration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}\n**Volume**: \`${queuebutton.volume}\``);
-                 try {
+                        .setColor(client.config.embed)
+                        .setThumbnail(queue.songs[0].thumbnail)
+                        .setAuthor({
+                            name: "Now Playing Song Details",
+                            iconURL: "https://emoji.gg/assets/emoji/7670-musicbeat.gif",
+                            URL: queue.songs[0].url
+                        }).setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\n**Duration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}\n**Volume**: \`${queuebutton.volume}\``);
+                    try {
                         button.update({
                             embeds: [novola],
                             components: [buttonsnew]
@@ -194,9 +200,11 @@ let volumereply;
                         return ErrorMessage(message, t)
                     }
                 } else if (button.customId === "pausequeue") {
-                    try{
+                    try {
                         await queuebutton.pause()
-                    } catch (e) {return}
+                    } catch (e) {
+                        return
+                    }
 
                     if (queuebutton.songs[0].source === "youtube") {
                         source = "<:YouTube:914836593615970364> YouTube";
@@ -205,14 +213,14 @@ let volumereply;
                     }
                     const channelvc = await message.guild.channels.cache.get(member.voice.channelId)
                     const novelem = new MessageEmbed()
-                    .setColor(client.config.embed)
-                    .setThumbnail(queue.songs[0].thumbnail)
-                    .setAuthor({
-                        name: "Now Playing Song Details", 
-                        iconURL: "https://emoji.gg/assets/emoji/7670-musicbeat.gif", 
-                        URL: queue.songs[0].url
-                    }) .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\n**Duration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}\n**Volume**: \`${queuebutton.volume}\``);
-                     try {
+                        .setColor(client.config.embed)
+                        .setThumbnail(queue.songs[0].thumbnail)
+                        .setAuthor({
+                            name: "Now Playing Song Details",
+                            iconURL: "https://emoji.gg/assets/emoji/7670-musicbeat.gif",
+                            URL: queue.songs[0].url
+                        }).setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\n**Duration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}\n**Volume**: \`${queuebutton.volume}\``);
+                    try {
                         button.update({
                             embeds: [novelem],
                             components: [buttonsnew]
@@ -220,10 +228,12 @@ let volumereply;
                     } catch (t) {
                         return ErrorMessage(message, t)
                     }
-                } else if(button.customId === "resumequeue") {
+                } else if (button.customId === "resumequeue") {
                     try {
-                     await queuebutton.resume()
-                    } catch (e) {return}
+                        await queuebutton.resume()
+                    } catch (e) {
+                        return
+                    }
                     if (queuebutton.songs[0].source === "youtube") {
                         source = "<:YouTube:914836593615970364> YouTube";
                     } else {
@@ -231,15 +241,15 @@ let volumereply;
                     }
                     const channelvc = await message.guild.channels.cache.get(member.voice.channelId)
                     const hii = new MessageEmbed()
-                    .setColor(client.config.embed)
-                    .setThumbnail(queue.songs[0].thumbnail)
-                    .setAuthor({
-                        name: "Now Playing Song Details", 
-                        iconURL: "https://emoji.gg/assets/emoji/7670-musicbeat.gif", 
-                        URL: queue.songs[0].url
-                    })
-                    .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\n**Duration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}\n**Volume**: \`${queuebutton.volume}\``);
-                  try {
+                        .setColor(client.config.embed)
+                        .setThumbnail(queue.songs[0].thumbnail)
+                        .setAuthor({
+                            name: "Now Playing Song Details",
+                            iconURL: "https://emoji.gg/assets/emoji/7670-musicbeat.gif",
+                            URL: queue.songs[0].url
+                        })
+                        .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\n**Duration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}\n**Volume**: \`${queuebutton.volume}\``);
+                    try {
                         button.update({
                             embeds: [hii],
                             components: [buttonsnew]
@@ -249,7 +259,7 @@ let volumereply;
                     }
                     // DON'T FORGET TO FIX THIS PART YOU SILLY HUMAN OKAY????????????????????????
                 } else if (button.customId === "loopsong") {
-                    if(queuebutton) {
+                    if (queuebutton) {
                         return
                     } else {
                         return
@@ -261,15 +271,15 @@ let volumereply;
                     }
                     const channelvc = await message.guild.channels.cache.get(member.voice.channelId)
                     const hii = new MessageEmbed()
-                    .setColor(client.config.embed)
-                    .setThumbnail(queue.songs[0].thumbnail)
-                    .setAuthor({
-                        name: "Now Playing Song Details", 
-                        iconURL: "https://emoji.gg/assets/emoji/7670-musicbeat.gif", 
-                        URL: queue.songs[0].url
-                    })
-                    .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\n**Duration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}\n**Volume**: \`${queuebutton.volume}\``);
-                  try {
+                        .setColor(client.config.embed)
+                        .setThumbnail(queue.songs[0].thumbnail)
+                        .setAuthor({
+                            name: "Now Playing Song Details",
+                            iconURL: "https://emoji.gg/assets/emoji/7670-musicbeat.gif",
+                            URL: queue.songs[0].url
+                        })
+                        .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\n**Duration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}\n**Volume**: \`${queuebutton.volume}\``);
+                    try {
                         button.update({
                             embeds: [hii],
                             components: [buttonsnew]
@@ -297,14 +307,14 @@ let volumereply;
             const ende = new MessageEmbed()
                 .setFooter("Expired Queue Info", "https://emoji.gg/assets/emoji/3786_KannaOOF.gif")
                 .setColor(client.config.embed)
-                    .setThumbnail(queue.songs[0].thumbnail)
-                    .setAuthor({
-                        name: "Now Playing Song Details", 
-                        iconURL: "https://emoji.gg/assets/emoji/7670-musicbeat.gif", 
-                        URL: queue.songs[0].url
-                    })
-                    .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\n**Duration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}\n**Volume**: \`${queuebutton.volume}\``);
-                 try {
+                .setThumbnail(queue.songs[0].thumbnail)
+                .setAuthor({
+                    name: "Now Playing Song Details",
+                    iconURL: "https://emoji.gg/assets/emoji/7670-musicbeat.gif",
+                    URL: queue.songs[0].url
+                })
+                .setDescription(`**Song Name**: ${queue.songs[0].name}\n**Channel**: \`${channelvc.name}\`\n**Duration**: \`${queue.songs[0].formattedDuration}\`\n**Source**: ${source}\n**Volume**: \`${queuebutton.volume}\``);
+            try {
                 volumereply.edit({
                     embeds: [ende],
                     components: []
@@ -313,5 +323,6 @@ let volumereply;
                 return
             }
         })
-    
-    }}
+
+    }
+}

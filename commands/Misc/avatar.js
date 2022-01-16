@@ -6,7 +6,9 @@ const {
     MessageActionRow
 } = require("discord.js");
 
-const { ErrorMessage } = require("../../fc")
+const {
+    ErrorMessage
+} = require("../../fc")
 
 module.exports = {
     name: "avatar",
@@ -48,11 +50,13 @@ module.exports = {
                 dynamic: true,
                 size: 512,
             }));
-try {
-        message.channel.send({
-            embeds: [avs],
-            components: [buttons]
-        })
-    } catch (e) {ErrorMessage(message, e)}
+        try {
+            message.channel.send({
+                embeds: [avs],
+                components: [buttons]
+            })
+        } catch (e) {
+            ErrorMessage(message, e)
+        }
     },
 }

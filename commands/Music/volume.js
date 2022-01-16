@@ -55,24 +55,25 @@ module.exports = {
                 embeds: [noqu]
             });
 
-                const volume = parseInt(args[0])
-                const numberv = new MessageEmbed()
-                    .setDescription(`${client.emotes.error} | Please enter a valid number [1-100]`)
-                    .setColor(client.config.embed);
+            const volume = parseInt(args[0])
+            const numberv = new MessageEmbed()
+                .setDescription(`${client.emotes.error} | Please enter a valid number [1-100]`)
+                .setColor(client.config.embed);
 
-                if(isNaN(volume) || volume > 100 || volume < 0) return message.channel.send({
-                    embeds: [numberv]
-                })
+            if (isNaN(volume) || volume > 100 || volume < 0) return message.channel.send({
+                embeds: [numberv]
+            })
 
-                const done = new MessageEmbed()
-                    .setDescription(`${client.emotes.success} | Kobayashi set volume from \`${queue.volume}\` to \`${volume}\``)
-                    .setColor(client.config.embed);
+            const done = new MessageEmbed()
+                .setDescription(`${client.emotes.success} | Kobayashi set volume from \`${queue.volume}\` to \`${volume}\``)
+                .setColor(client.config.embed);
 
-                queue.setVolume(volume)
-                message.channel.send({
-                    embeds: [done]
-                })
-            } catch(e) {
-                ErrorMessage(message, e)
-            }
-        }}
+            queue.setVolume(volume)
+            message.channel.send({
+                embeds: [done]
+            })
+        } catch (e) {
+            ErrorMessage(message, e)
+        }
+    }
+}

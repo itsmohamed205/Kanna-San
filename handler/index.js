@@ -1,6 +1,12 @@
-const { glob } = require("glob");
-const { promisify } = require("util");
-const { Client } = require("discord.js");
+const {
+    glob
+} = require("glob");
+const {
+    promisify
+} = require("util");
+const {
+    Client
+} = require("discord.js");
 
 const globPromise = promisify(glob);
 
@@ -16,9 +22,12 @@ module.exports = async (client) => {
         const directory = splitted[splitted.length - 2];
 
         if (file.name) {
-            const properties = { directory, ...file };
+            const properties = {
+                directory,
+                ...file
+            };
             client.commands.set(file.name, properties);
-            file.aliases?.forEach((alias) => {
+            file.aliases ? .forEach((alias) => {
                 client.aliases.set(alias, file.name)
             })
         }
@@ -36,16 +45,16 @@ module.exports = async (client) => {
     const arrayOfSlashCommands = [];
     slashCommands.map((value) => {
         const file = require(value);
-        if (!file?.name) return;
+        if (!file ? .name) return;
         client.slashCommands.set(file.name, file);
         arrayOfSlashCommands.push(file);
     });
     client.on("ready", async () => {
         // Register for a single guild
-     //await client.guilds.cache.get("549667064214978569").commands.set(arrayOfSlashCommands);
-// 874941747778707457 save
+        //await client.guilds.cache.get("549667064214978569").commands.set(arrayOfSlashCommands);
+        // 874941747778707457 save
         // Register for all the guilds the bot is in
-      console.log("Slash is down")
+        console.log("Slash is down")
         //await client.application.commands.set(arrayOfSlashCommands);
     });
 };

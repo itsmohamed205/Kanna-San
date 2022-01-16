@@ -3,8 +3,8 @@
     "prefix": "k!",
     "embed": "#2c2f33",
     "mongooseConnectionString": "mongodb+srv://saberchan:450996263@senpaisaberdb.tmhya.mongodb.net/Neko-Maid",
-    "mongodburl":"mongodb+srv://saberchan:450996263@senpaisaberdb.tmhya.mongodb.net/Neko-Maid",
-  "emoji": {
+    "mongodburl": "mongodb+srv://saberchan:450996263@senpaisaberdb.tmhya.mongodb.net/Neko-Maid",
+    "emoji": {
         "play": "<a:loading:891330834357948477>",
         "stop": "<:sleep:914643320721010718>",
         "success": "<:yay:914645379415420998>",
