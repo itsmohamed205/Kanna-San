@@ -21,9 +21,10 @@ client.distube.on("addSong", (queue, song) => {
     }
     const addembed = new MessageEmbed()
         .setAuthor({
-            name: "Song Added Successfully!"
+            name: "Song Added Successfully!",
+            URL: song.url
         })
-        .setDescription(`**Name**: \`${song.name}\`\n**Source**: [${source}](${song.url})`)
+        .setDescription(`**Name**: \`${song.name}\`\n**Source**: ${source}`)
         .setFooter(`Duration: ${song.formattedDuration}`)
         .setThumbnail(song.thumbnail)
     queue.textChannel.send({
@@ -45,6 +46,6 @@ client.distube
         channel.send(`${client.emotes.error} | An error encountered: ${e}`)
         console.error(e)
     })
-    .on("empty", queue => queue.textChannel.send(`${client.emotes.loading} | Voice channel is empty! I will go to play with Saikawa`))
+    .on("empty", queue => queue.textChannel.send(`${client.emotes.success} | Voice channel is empty! I will go to play with Saikawa`))
     .on("searchNoResult", message => message.channel.send(`${client.emotes.error} | No result found!`))
     .on("finish", queue => queue.textChannel.send(`${client.emotes.stop} | Yay the queue is empty! Time to go sleep...`))
