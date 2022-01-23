@@ -58,14 +58,20 @@ module.exports = {
                 embeds: [noqu]
             })
             const endoflist = new MessageEmbed()
-                .setDescription(`${client.emotes.error} | Enter position to seek to it`)
+                .setDescription(`${client.emotes.error} | Enter a valid time to seek to`)
                 .setColor(client.config.embed);
+
             const time = Number(args[0])
-            if (!args[0] || isNaN(time)) return message.channel.send({
+            if (!args[0]) return message.channel.send({
                 embeds: [endoflist]
             })
-            queue.seek(time)
-
+            try {
+                queue.seek(time)
+            } catch (e) {
+                return message.channel.send({
+                    embeds: [endoflist]
+                })
+            }
             const done = new MessageEmbed()
                 .setDescription(`${client.emotes.success} | Seeked to ${time}`)
                 .setColor(client.config.embed);
