@@ -19,8 +19,8 @@ module.exports = {
                     const datembed = new MessageEmbed()
                         .setColor("RANDOM")
                         .setAuthor({
-                            author: "Pong!",
-                            iconURL: "https://images-ext-1.discordapp.net/external/HgmGiJIakRAEJMHoLpzaPVVC7OfA3NTqVbFqzDRmrlo/%3Fv%3D1%26size%3D64/https/cdn.discordapp.com/emojis/839699327219007528.gif"
+                            name: "Ping Pong! :D",
+                            icon_url: "https://images-ext-1.discordapp.net/external/HgmGiJIakRAEJMHoLpzaPVVC7OfA3NTqVbFqzDRmrlo/%3Fv%3D1%26size%3D64/https/cdn.discordapp.com/emojis/839699327219007528.gif"
                         })
                         .setThumbnail('https://media.discordapp.net/attachments/692555215299411989/940407680881819688/latency.png?width=473&height=473')
                         .setDescription(`**Latency**: ${Date.now() - message.createdTimestamp - 2500}ms\n**API Latency**: ${Math.round(client.ws.ping)}ms`)
