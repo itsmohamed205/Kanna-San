@@ -9,7 +9,7 @@ const {
 const {
     joinVoiceChannel
 } = require('@discordjs/voice');
-
+const format = require("format-duration")
 module.exports = {
     name: "seek",
     aliases: ["seekto"],
@@ -51,7 +51,7 @@ module.exports = {
             const queue = client.distube.getQueue(message)
 
             const noqu = new MessageEmbed()
-                .setDescription(`${client.emotes.error} | The queue is clean, Tohru cleaned it from a while`)
+                .setDescription(`${client.emotes.error} | There is nothing to play, what about adding some?`)
                 .setColor(client.config.embed);
 
             if (!queue) return message.channel.send({
@@ -72,8 +72,9 @@ module.exports = {
                     embeds: [endoflist]
                 })
             }
+            const newtime = format(time * 1000)
             const done = new MessageEmbed()
-                .setDescription(`${client.emotes.success} | Seeked to ${time}`)
+                .setDescription(`${client.emotes.success} | Seeked to ${newtime} as wanted!`)
                 .setColor(client.config.embed);
             message.channel.send({
                 embeds: [done]

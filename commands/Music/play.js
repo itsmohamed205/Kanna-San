@@ -57,8 +57,9 @@ module.exports = {
                 await client.distube.play(message, string)
                 const queuee = await client.distube.getQueue(message)
 
-
-                queuee.setVolume(100);
+if(queuee !== undefined) {
+    if(queuee.songs.length <= 1)return queuee.setVolume(100);
+}
             } catch (e) {
                 const fetcherror = new MessageEmbed()
                     .setColor(client.config.embed)
@@ -71,6 +72,11 @@ module.exports = {
                 const queue = await client.distube.getQueue(message)
                 queue.songs[queue.songs.length - 1].source = "spotify"
             }
+            client.distube
+    .on("addList", (queue, playlist) => {
+        //queue.textChannel.send(`${client.emotes.success} | Added \`${playlist.name}\` playlist (${playlist.songs.length} songs) to queue\n${status(queue)}`)
+      console.log(playlist.songs)
+    })
         } catch (e) {
             ErrorMessage(message, e)
         }

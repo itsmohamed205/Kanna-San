@@ -18,10 +18,12 @@ module.exports.ErrorMessage = ErrorMessage;
 async function ErrorMessage(message, str) {
   try {
     const embed = new MessageEmbed()
-      .setColor(client.config.embed)
-      .setDescription(`${client.emotes.error} | **The System detected a new error Saikawa!**\nTriggered Command: **\`${message.content}\`**\nServer: **\`${message.guild.name} (ID: ${message.guild.id})\`**\nError:\n\`\`\`\n${str}\n\`\`\``)
+    .setColor("#cf352e")
+      .setDescription(`${client.emotes.error} | **The System detected a new error!**\nTriggered Command: **\`${message.content}\`**\nServer: **\`${message.guild.name} (ID: ${message.guild.id})\`**\nError:\n\`\`\`\n${str}\n\`\`\``)
       .setTimestamp()
-      .setFooter("Error Date");
+      .setFooter({
+        text: "Error Time"
+      });
     const home = await client.guilds.cache.get(client.config.channels.guild)
     const channel = await home.channels.cache.get(client.config.channels.error)
     await channel.send({
@@ -29,7 +31,8 @@ async function ErrorMessage(message, str) {
     })
     const msgreply = new MessageEmbed()
       .setDescription(`${client.emotes.error} | Gomen, Our code has detected an error and it has been reported to the developer`)
-      .setColor(client.config.embed);
+      .setColor(client.config.embed)
+      .setImage("https://66.media.tumblr.com/45ba2af78935a92480b6f0669fae12ed/tumblr_o5owisl7TP1sdn6j2o1_500.gif")
     message.channel.send({
       embeds: [msgreply]
     })

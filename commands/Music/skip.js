@@ -51,14 +51,14 @@ module.exports = {
             const queue = client.distube.getQueue(message)
 
             const noqu = new MessageEmbed()
-                .setDescription(`${client.emotes.error} | The queue is clean, Tohru cleaned it from a while`)
+                .setDescription(`${client.emotes.error} | There is nothing to play, what about adding some?`)
                 .setColor(client.config.embed);
 
             if (!queue) return message.channel.send({
                 embeds: [noqu]
             })
             const endoflist = new MessageEmbed()
-                .setDescription(`${client.emotes.error} | There is no more songs to skip to`)
+                .setDescription(`${client.emotes.error} | Nani! you have reached the end of the playlist... what to skip to now?`)
                 .setColor(client.config.embed);
 
             if (queue.songs.length <= 1) return message.channel.send({
@@ -67,7 +67,7 @@ module.exports = {
             const song = queue.skip()
 
             const done = new MessageEmbed()
-                .setDescription(`${client.emotes.success} | Song skippped as requested`)
+                .setDescription(`${client.emotes.success} | Song skippped as requested Senpai`)
                 .setColor(client.config.embed);
             message.channel.send({
                 embeds: [done]

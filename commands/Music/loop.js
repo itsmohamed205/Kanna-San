@@ -45,7 +45,7 @@ module.exports = {
             const queue = client.distube.getQueue(message)
 
             const noqu = new MessageEmbed()
-                .setDescription(`${client.emotes.error} | The queue is clean, Tohru cleaned it from a while`)
+                .setDescription(`${client.emotes.error} | There is nothing to play, what about adding some?`)
                 .setColor(client.config.embed);
 
             if (!queue) return message.channel.send({

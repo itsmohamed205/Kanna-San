@@ -44,7 +44,7 @@ module.exports = {
         const queue = client.distube.getQueue(message)
 
         const noqu = new MessageEmbed()
-            .setDescription(`${client.emotes.error} | The queue is clean, Tohru cleaned it from a while`)
+            .setDescription(`${client.emotes.error} | There is nothing to play, what about adding some?`)
             .setColor(client.config.embed);
 
         if (!queue) return message.channel.send({
@@ -55,33 +55,33 @@ module.exports = {
             new MessageButton()
             .setStyle("SUCCESS")
             .setCustomId("volumeminus")
-            .setEmoji("915408694420856853"),
+            .setEmoji("🔉"),
 
             new MessageButton()
             .setStyle("SUCCESS")
             .setCustomId("pausequeue")
-            .setEmoji("915408694420856853"),
+            .setEmoji("⏸️"),
 
             new MessageButton()
             .setStyle("SUCCESS")
             .setCustomId("resumequeue")
-            .setEmoji("915408694420856853"),
+            .setEmoji("▶️"),
 
             new MessageButton()
             .setStyle("SUCCESS")
             .setCustomId("loopsong")
-            .setEmoji("915408694420856853"),
+            .setEmoji("🔁"),
 
             new MessageButton()
             .setStyle("SUCCESS")
             .setCustomId("volumeplus")
-            .setEmoji("915408694420856853")
+            .setEmoji("🔊")
         )
         let source
         if (queue.songs[0].source === "youtube") {
-            source = "<:YouTube:914836593615970364> YouTube";
+            source = "<:YouTube:940378252076253245> YouTube";
         } else {
-            source = "<:SpotifyLogo:914834257640304650> Spotify"
+            source = "<:SpotifyLogo:940377715989700628> Spotify"
         }
         console.log(queue.songs[0].name + ": " + queue.songs[0].source)
         const channelvc = await message.guild.channels.cache.get(member.voice.channelId)
@@ -110,35 +110,35 @@ module.exports = {
             try {
                 const buttonsnew = new MessageActionRow().addComponents(
                     new MessageButton()
-                    .setStyle("SUCCESS")
-                    .setCustomId("volumeminus")
-                    .setEmoji("915408694420856853"),
+            .setStyle("SUCCESS")
+            .setCustomId("volumeminus")
+            .setEmoji("🔉"),
 
-                    new MessageButton()
-                    .setStyle("SUCCESS")
-                    .setCustomId("pausequeue")
-                    .setEmoji("915408694420856853"),
+            new MessageButton()
+            .setStyle("SUCCESS")
+            .setCustomId("pausequeue")
+            .setEmoji("⏸️"),
 
-                    new MessageButton()
-                    .setStyle("SUCCESS")
-                    .setCustomId("resumequeue")
-                    .setEmoji("915408694420856853"),
+            new MessageButton()
+            .setStyle("SUCCESS")
+            .setCustomId("resumequeue")
+            .setEmoji("▶️"),
 
-                    new MessageButton()
-                    .setStyle("SUCCESS")
-                    .setCustomId("loopsong")
-                    .setEmoji("915408694420856853"),
+            new MessageButton()
+            .setStyle("SUCCESS")
+            .setCustomId("loopsong")
+            .setEmoji("🔁"),
 
-                    new MessageButton()
-                    .setStyle("SUCCESS")
-                    .setCustomId("volumeplus")
-                    .setEmoji("915408694420856853")
+            new MessageButton()
+            .setStyle("SUCCESS")
+            .setCustomId("volumeplus")
+            .setEmoji("🔊")
                 )
                 const msg = await button.channel.messages.fetch(button.message.id);
                 if (msg.id !== volumereply.id) return
                 const queuebutton = client.distube.getQueue(button)
                 if (!queuebutton) return button.reply({
-                    content: "the queue is empty, i saw Tohru clean it",
+                    content: "There is nothing to play, what about adding some?",
                     ephermal: true
                 })
 
@@ -149,9 +149,9 @@ module.exports = {
                         await queuebutton.setVolume(queuebutton.volume + 10)
                     }
                     if (queuebutton.songs[0].source === "youtube") {
-                        source = "<:YouTube:914836593615970364> YouTube";
+                        source = "<:YouTube:940378252076253245> YouTube";
                     } else {
-                        source = "<:SpotifyLogo:914834257640304650> Spotify"
+                        source = "<:SpotifyLogo:940377715989700628> Spotify"
                     }
                     const channelvc = await message.guild.channels.cache.get(member.voice.channelId)
                     const novole = new MessageEmbed()
@@ -178,9 +178,9 @@ module.exports = {
                         await queuebutton.setVolume(queuebutton.volume - 10)
                     }
                     if (queuebutton.songs[0].source === "youtube") {
-                        source = "<:YouTube:914836593615970364> YouTube";
+                        source = "<:YouTube:940378252076253245> YouTube";
                     } else {
-                        source = "<:SpotifyLogo:914834257640304650> Spotify"
+                        source = "<:SpotifyLogo:940377715989700628> Spotify"
                     }
                     const channelvc = await message.guild.channels.cache.get(member.voice.channelId)
                     const novola = new MessageEmbed()
@@ -207,9 +207,9 @@ module.exports = {
                     }
 
                     if (queuebutton.songs[0].source === "youtube") {
-                        source = "<:YouTube:914836593615970364> YouTube";
+                        source = "<:YouTube:940378252076253245> YouTube";
                     } else {
-                        source = "<:SpotifyLogo:914834257640304650> Spotify"
+                        source = "<:SpotifyLogo:940377715989700628> Spotify"
                     }
                     const channelvc = await message.guild.channels.cache.get(member.voice.channelId)
                     const novelem = new MessageEmbed()
@@ -235,9 +235,9 @@ module.exports = {
                         return
                     }
                     if (queuebutton.songs[0].source === "youtube") {
-                        source = "<:YouTube:914836593615970364> YouTube";
+                        source = "<:YouTube:940378252076253245> YouTube";
                     } else {
-                        source = "<:SpotifyLogo:914834257640304650> Spotify"
+                        source = "<:SpotifyLogo:940377715989700628> Spotify"
                     }
                     const channelvc = await message.guild.channels.cache.get(member.voice.channelId)
                     const hii = new MessageEmbed()
@@ -265,9 +265,9 @@ module.exports = {
                         return
                     }
                     if (queuebutton.songs[0].source === "youtube") {
-                        source = "<:YouTube:914836593615970364> YouTube";
+                        source = "<:YouTube:940378252076253245> YouTube";
                     } else {
-                        source = "<:SpotifyLogo:914834257640304650> Spotify"
+                        source = "<:SpotifyLogo:940377715989700628> Spotify"
                     }
                     const channelvc = await message.guild.channels.cache.get(member.voice.channelId)
                     const hii = new MessageEmbed()
@@ -300,9 +300,9 @@ module.exports = {
                 components: []
             })
             if (queuebutton.songs[0].source === "youtube") {
-                source = "<:YouTube:914836593615970364> YouTube";
+                source = "<:YouTube:940378252076253245> YouTube";
             } else {
-                source = "<:SpotifyLogo:914834257640304650> Spotify"
+                source = "<:SpotifyLogo:940377715989700628> Spotify"
             }
             const ende = new MessageEmbed()
                 .setFooter("Expired Queue Info", "https://emoji.gg/assets/emoji/3786_KannaOOF.gif")

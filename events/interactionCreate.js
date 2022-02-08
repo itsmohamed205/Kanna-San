@@ -13,7 +13,8 @@ client.on("interactionCreate", async (interaction) => {
         const cmd = client.slashCommands.get(interaction.commandName);
         if (!cmd)
             return interaction.followUp({
-                content: "Guess this command got deleted..."
+                content: "Sorry but the requested command is deleted for development purposes",
+                ephemeral: true
             });
 
         const args = [];

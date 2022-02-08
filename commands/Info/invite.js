@@ -27,8 +27,9 @@ module.exports = {
       )
       const invite = new MessageEmbed()
         .setColor(client.config.embed)
-        .setDescription(`Invite link is below Senpai!, thanks for using Kanna San✨`)
+        .setDescription(`Invite link is below Senpai!, thanks for using adding me!`)
         .setThumbnail(client.user.displayAvatarURL())
+        .setImage("")
         .setTimestamp()
 
       return message.channel.send({

@@ -33,11 +33,11 @@ module.exports = {
             .addComponents(
                 new MessageButton()
                 .setStyle("LINK")
-                .setEmoji("888830034574475325")
+                .setEmoji("940351491590488114")
                 .setLabel("Download")
                 .setURL(user.user.displayAvatarURL({
                     dynamic: true,
-                    size: 512,
+                    size: 1024,
                 }))
             )
         let avs = new MessageEmbed()

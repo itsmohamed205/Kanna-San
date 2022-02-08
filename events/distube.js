@@ -43,9 +43,32 @@ client.distube
     // DisTubeOptions.searchSongs = true
     .on("searchCancel", message => message.channel.send(`${client.emotes.error} | Searching canceled`))
     .on("error", (channel, e) => {
-        channel.send(`${client.emotes.error} | An error encountered: ${e}`)
-        console.error(e)
-    })
-    .on("empty", queue => queue.textChannel.send(`${client.emotes.success} | Voice channel is empty! I will go to play with Saikawa`))
+        try {
+            const embed = new MessageEmbed()
+              .setColor("#cf352e")
+              .setDescription(`${client.emotes.error} | **The System detected a new error!**\nTriggered Command: **\`Music Command\`**\nServer: **\`${channel.guild.name} (ID: ${channel.guild.id})\`**\nError:\n\`\`\`\n${e}\n\`\`\``)
+              .setTimestamp()
+              .setFooter({
+                  text: "Error Time"
+                });
+            const home = await client.guilds.cache.get(client.config.channels.guild)
+            const channel = await home.channels.cache.get(client.config.channels.error)
+            await channel.send({
+              embeds: [embed]
+            })
+            const msgreply = new MessageEmbed()
+              .setDescription(`${client.emotes.error} | Gomen, Our code has detected an error and it has been reported to the developer`)
+              .setColor(client.config.embed)
+              .setImage("https://66.media.tumblr.com/45ba2af78935a92480b6f0669fae12ed/tumblr_o5owisl7TP1sdn6j2o1_500.gif")
+
+            channel.send({
+              embeds: [msgreply]
+            })
+          } catch (e) {
+            console.log(e)
+          }
+        }
+    )
+    .on("empty", queue => queue.textChannel.send(`${client.emotes.success} | Voice channel is empty! I will go serve others!`))
     .on("searchNoResult", message => message.channel.send(`${client.emotes.error} | No result found!`))
-    .on("finish", queue => queue.textChannel.send(`${client.emotes.stop} | Yay the queue is empty! Time to go sleep...`))
+    .on("finish", queue => queue.textChannel.send(`${client.emotes.stop} | Yay the queue is empty! Time to clean!`))

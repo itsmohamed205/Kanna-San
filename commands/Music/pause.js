@@ -46,7 +46,7 @@ module.exports = {
             }
             const queue = client.distube.getQueue(message)
             const noqu = new MessageEmbed()
-                .setDescription(`${client.emotes.error} | The queue is clean, Tohru cleaned it from a while`)
+                .setDescription(`${client.emotes.error} | There is nothing to play, what about adding some?`)
                 .setColor(client.config.embed);
             if (!queue) return message.channel.send({
                 embeds: [noqu]
@@ -56,7 +56,7 @@ module.exports = {
                 .setColor(client.config.embed);
             try {
                 const paused = new MessageEmbed()
-                    .setDescription(`${client.emotes.error} | Queue is paused already, to resume use \`resume\` command`)
+                    .setDescription(`${client.emotes.error} | Queue is already paused, to resume use \`resume\` command`)
                     .setColor(client.config.embed);
                 if (queue.pause) return message.channel.send({
                     embeds: [paused]

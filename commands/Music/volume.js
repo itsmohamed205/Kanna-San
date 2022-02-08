@@ -48,7 +48,7 @@ module.exports = {
             const queue = client.distube.getQueue(message)
 
             const noqu = new MessageEmbed()
-                .setDescription(`${client.emotes.error} | The queue is clean, Tohru cleaned it from a while`)
+                .setDescription(`${client.emotes.error} | There is nothing to play, what about adding some?`)
                 .setColor(client.config.embed);
 
             if (!queue) return message.channel.send({
@@ -57,15 +57,25 @@ module.exports = {
 
             const volume = parseInt(args[0])
             const numberv = new MessageEmbed()
-                .setDescription(`${client.emotes.error} | Please enter a valid number [1-100]`)
+                .setDescription(`${client.emotes.error} | Please enter a valid number [1-150]`)
                 .setColor(client.config.embed);
 
-            if (isNaN(volume) || volume > 100 || volume < 0) return message.channel.send({
+            if (isNaN(volume) || volume > 150 || volume < 0) return message.channel.send({
                 embeds: [numberv]
             })
-
+const text = [
+    "i hate caffein...",
+    "hearing loud music for too long may affect your ears",
+    "i just saw someone pervert trying to flirt with me",
+    "is there something else i can help you with?",
+    "music helps to meditate actually",
+    "my developer suffered from depression when he wrote these codes",
+    "if you have a bad mood evade sad music",
+    "my owner wishes you a great time!"
+]
+const randomindx = Math.floor(Math.random() * text.length)
             const done = new MessageEmbed()
-                .setDescription(`${client.emotes.success} | Kobayashi set volume from \`${queue.volume}\` to \`${volume}\``)
+                .setDescription(`${client.emotes.success} | Set volume from \`${queue.volume}\` to \`${volume}\`, ${text[randomindx]}`)
                 .setColor(client.config.embed);
 
             queue.setVolume(volume)
