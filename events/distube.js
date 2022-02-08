@@ -69,6 +69,6 @@ client.distube
           }
         }
     )
-    .on("empty", queue => queue.textChannel.send(`${client.emotes.success} | Voice channel is empty! I will go serve others!`))
+    .on("empty", queue => queue.textChannel.send(`${client.emotes.lazy} | Voice channel is empty! I will go serve others!`))
     .on("searchNoResult", message => message.channel.send(`${client.emotes.error} | No result found!`))
     .on("finish", queue => queue.textChannel.send(`${client.emotes.stop} | Yay the queue is empty! Time to clean!`))
