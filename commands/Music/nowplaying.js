@@ -83,7 +83,7 @@ module.exports = {
         } else {
             source = "<:SpotifyLogo:940377715989700628> Spotify"
         }
-        console.log(queue.songs[0].name + ": " + queue.songs[0].source)
+       // console.log(queue.songs[0].name + ": " + queue.songs[0].source)
         const channelvc = await message.guild.channels.cache.get(member.voice.channelId)
         const novol = new MessageEmbed()
             .setColor(client.config.embed)
@@ -108,6 +108,7 @@ module.exports = {
         });
         collector.on("collect", async button => {
             try {
+                if(button.user.id !== message.author.id)return button.reply({ content: "This menu isn't for you my senpai...", epheremal: true})
                 const buttonsnew = new MessageActionRow().addComponents(
                     new MessageButton()
             .setStyle("SUCCESS")
