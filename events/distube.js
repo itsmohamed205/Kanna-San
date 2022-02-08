@@ -42,7 +42,7 @@ client.distube
     })
     // DisTubeOptions.searchSongs = true
     .on("searchCancel", message => message.channel.send(`${client.emotes.error} | Searching canceled`))
-    .on("error", (channel, e) => {
+    .on("error", async (channel, e) => {
         try {
             const embed = new MessageEmbed()
               .setColor("#cf352e")
