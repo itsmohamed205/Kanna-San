@@ -21,15 +21,15 @@ module.exports = {
       if (!prefix) prefix = client.config.prefix
       const buttons = new MessageActionRow().addComponents(
         new MessageButton()
-        .setEmoji("914641596526518343")
+        .setEmoji("940344915051823144")
         .setStyle("LINK")
         .setURL("https://discord.com/api/oauth2/authorize?client_id=692535884683411477&permissions=8&scope=bot%20applications.commands")
       )
       const invite = new MessageEmbed()
         .setColor(client.config.embed)
-        .setDescription(`Invite link is below Senpai!, thanks for using adding me!`)
+        .setDescription(`Invite link is below Senpai!, thanks for using adding me!\n`)
         .setThumbnail(client.user.displayAvatarURL())
-        .setImage("")
+        //.setImage("https://cdn.discordapp.com/attachments/692555215299411989/940403183434489906/hkcd36els2y71.gif")
         .setTimestamp()
 
       return message.channel.send({
