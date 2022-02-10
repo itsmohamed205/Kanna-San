@@ -13,7 +13,7 @@ module.exports = {
     description: 'Shows info about a server',
     run: async (client, message, args) => {
         try {
-            await getColors(message.guild.iconURL({format: "png"})).then(async colors => {
+        getColors(message.guild.iconURL({format: "png"})).then(async colors => {
                 colors = await colors.map(color => color.hex())
 
             

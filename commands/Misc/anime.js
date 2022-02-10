@@ -46,7 +46,7 @@ module.exports = {
     
             await API.searchAnime(Text).then(manga => {
                 let title;
-                await getColors(manga[0].attributes.posterImage.original).then(async colors => {
+                getColors(manga[0].attributes.posterImage.original).then(async colors => {
                     colors = await colors.map(color  => color.hex())
                 
                 title = manga[0].attributes.titles.en_jp;

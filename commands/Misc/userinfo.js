@@ -41,7 +41,7 @@ module.exports = {
 
         if (!member) {
             try {
-                await getcolors(message.author.displayAvatarURL({ dynamic: true, format: "png" })).then(async colors => {
+                 getcolors(message.author.displayAvatarURL({ dynamic: true, format: "png" })).then(async colors => {
                     colors = colors.map(color => color.hex())
 
                     const auth = message.guild.members.cache.get(message.author.id)

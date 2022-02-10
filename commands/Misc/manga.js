@@ -45,7 +45,7 @@ module.exports = {
 
         try {
             await API.searchManga(Text).then(manga => {
-                await getColors(manag[0].attributes.posterImage.original).then(async colors => {
+                getColors(manag[0].attributes.posterImage.original).then(async colors => {
                     colors = colors.map(color => color.hex())
                 
                 let title;
