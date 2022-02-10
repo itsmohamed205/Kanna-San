@@ -8,7 +8,7 @@ const {
     MessageEmbed
 } = require('discord.js');
 const Kitsu = require('search-kitsu');
-
+const getColors = require("get-image-colors")
 const API = new Kitsu();
 module.exports = {
     name: 'manga',
@@ -45,6 +45,9 @@ module.exports = {
 
         try {
             await API.searchManga(Text).then(manga => {
+                await getColors(manag[0].attributes.posterImage.original).then(async colors => {
+                    colors = colors.map(color => color.hex())
+                
                 let title;
                 title = manga[0].attributes.titles.en_jp;
                 if (
@@ -54,17 +57,17 @@ module.exports = {
                     title =
                     manga[0].attributes.titles.en || manga[0].attributes.titles.en_us;
                 Embed = new MessageEmbed()
-                    .setColor('RANDOM')
+                    .setColor(colors[0])
                     .setURL(`https://kitsu.io/manga/${manga[0].id}`)
                     .setTitle(title)
                     .setDescription(manga[0].attributes.synopsis)
-                    .addField(`📁Type`, `${manga[0].attributes.subtype}`)
-                    .addField(`⏳Status`, `${manga[0].attributes.status}`)
+                    .addField(`📁Type`, `${manga[0].attributes.subtype}`, true)
+                    .addField(`⏳Status`, `${manga[0].attributes.status}`, true)
                     .addField(
                         `📅Published`,
                         `From ${manga[0].attributes.startDate} To ${
 							manga[0].attributes.endDate ? manga[0].attributes.endDate : '?'
-						}`
+						}`, true
                     )
                     .addField(
                         `📚Volume Count`,
@@ -74,14 +77,14 @@ module.exports = {
 								: '?'
 						}
 					`
-                    )
+                  ,true )
                     .addField(
                         '📰Chapter Count',
                         `${
 							manga[0].attributes.chapterCount
 								? manga[0].attributes.chapterCount.toString()
 								: '?'
-						}`
+						}`, true
                     )
                     /*	.addField(
                     		`Next Release`,
@@ -92,13 +95,14 @@ module.exports = {
                     		}`
                     	)*/
 
-                    .addField('🏆Popularity', `#${manga[0].attributes.ratingRank}`)
+                    .addField('🏆Popularity', `#${manga[0].attributes.ratingRank}`, true)
                     /*
                     .addField(`Genres`, manga[0].relationships.genres)
                     */
                     .setThumbnail(manga[0].attributes.posterImage.original)
-                    .setFooter(`Score - ${manga[0].attributes.averageRating}`);
-            });
+                    .addField(`⭐Score`, `${manga[0].attributes.averageRating}/100`, true);
+            })
+        });
         } catch (error) {
             console.log(error);
             await Msg.delete();

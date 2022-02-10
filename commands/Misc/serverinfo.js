@@ -5,7 +5,7 @@ const {
     MessageEmbed
 } = require('discord.js');
 const moment = require('moment');
-
+const getColors = require("get-image-colors")
 module.exports = {
     name: 'serverinfo',
     aliases: ['serverdata', "infoserver"],
@@ -13,6 +13,10 @@ module.exports = {
     description: 'Shows info about a server',
     run: async (client, message, args) => {
         try {
+            await getColors(message.guild.iconURL({format: "png"})).then(async colors => {
+                colors = await colors.map(color => color.hex())
+
+            
             function trimArray(arr, maxLen = 25) {
                 if (arr.array().length > maxLen) {
                     const len = arr.array().length - maxLen;
@@ -51,7 +55,7 @@ module.exports = {
             if (boosts >= 30) maxbitrate = 384000;
             const embed = new MessageEmbed()
                 .setTitle(message.guild.name)
-                .setColor('RANDOM')
+                .setColor(colors[0])
                 .setThumbnail(message.guild.iconURL({
                     dynamic: true
                 }))
@@ -97,6 +101,7 @@ Bots: ${message.guild.members.cache.filter(m => m.user.bot).size}`
             message.channel.send({
                 embeds: [embed]
             });
+        });
         } catch (e) {
             ErrorMessage(message, e)
         }

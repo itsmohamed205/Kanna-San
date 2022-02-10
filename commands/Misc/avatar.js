@@ -6,6 +6,8 @@ const {
     MessageActionRow
 } = require("discord.js");
 
+const getColors = require("get-image-colors")
+
 const {
     ErrorMessage
 } = require("../../fc")
@@ -32,31 +34,38 @@ module.exports = {
         const buttons = new MessageActionRow()
             .addComponents(
                 new MessageButton()
-                .setStyle("LINK")
-                .setEmoji("940351491590488114")
-                .setLabel("Download")
+                    .setStyle("LINK")
+                    .setEmoji("940351491590488114")
+                    .setLabel("Download")
+                    .setURL(user.user.displayAvatarURL({
+                        dynamic: true,
+                        size: 1024,
+                    }))
+            )
+
+
+        await getColors(user.user.displayAvatarURL({ dynamic: true, format: "png" })).then(async colors => {
+            colors = await colors.map(color => color.hex())
+
+            let avs = new MessageEmbed()
+                .setColor(colors[0])
                 .setURL(user.user.displayAvatarURL({
                     dynamic: true,
-                    size: 1024,
                 }))
-            )
-        let avs = new MessageEmbed()
-            .setColor("RANDOM")
-            .setURL(user.user.displayAvatarURL({
-                dynamic: true,
-            }))
-            .setFooter(message.author.username, message.author.displayAvatarURL())
-            .setImage(user.user.displayAvatarURL({
-                dynamic: true,
-                size: 512,
-            }));
-        try {
-            message.channel.send({
-                embeds: [avs],
-                components: [buttons]
-            })
-        } catch (e) {
-            ErrorMessage(message, e)
-        }
+                .setFooter(message.author.username, message.author.displayAvatarURL())
+                .setImage(user.user.displayAvatarURL({
+                    dynamic: true,
+                    size: 512,
+                }));
+            try {
+                message.channel.send({
+                    embeds: [avs],
+                    components: [buttons]
+                })
+
+            } catch (e) {
+                ErrorMessage(message, e)
+            }
+        })
     },
 }

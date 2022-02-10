@@ -3,6 +3,7 @@ const {
     Message,
     MessageEmbed
 } = require("discord.js");
+const getcolors = require("get-image-colors")
 const {
     ErrorMessage
 } = require("../../fc")
@@ -40,102 +41,110 @@ module.exports = {
 
         if (!member) {
             try {
-                const auth = message.guild.members.cache.get(message.author.id)
-                const roles = auth.roles.cache
-                    .sort((a, b) => b.position - a.position)
-                    .map(role => role.toString())
-                    .slice(0, -1);
-                const rolecount = roles.length
-                const userFlags = auth.user.flags.toArray();
-                const embed1 = new MessageEmbed()
-                    .setTitle("Here is User Data Senpai")
-                    .setColor("RANDOM")
-                    .setThumbnail(message.author.displayAvatarURL({
-                        dynamic: true
-                    }))
-                    .addField("**👤|Username:**", `${message.author.username}`)
-                    .addField("**🔢|Discriminator:**", `${message.author.discriminator}`)
-                    .addField("**🤖|Is a Bot:**", `${message.author.bot ? 'Yes.' : 'No.'}`)
-                    .addField("**🆔|ID:**", `${message.author.id}`)
-                    .addField("**🎖️|Flags:**", userFlags.length ? userFlags.map(flag => flags[flag]).join(', ') : 'User does not have flag.')
-                if (auth.presence !== null) {
-                    embed1
-                        .addField("**🟢|Status:**", auth.presence.status)
-                } else {
-                    embed1
-                        .addField("**🟢|Status:**", "offline")
-                }
-                embed1
-                    .addField("**📅|Account Creation Date:**", `${message.author.createdAt.toLocaleString()}`)
-                    //console.log(message.member.roles)
-                    .addField("**⬆️|Highest Role:**", auth.roles.highest.id === message.guild.id ? 'User does not have a role.' : `<@&${message.member.roles.highest.id}>`)
-                    .addField("**📅|Server Join Date:**", auth.joinedAt.toLocaleString())
-                if (roles.length > 0) {
-                    if (roles.length < 26) {
+                await getcolors(message.author.displayAvatarURL({ dynamic: true, format: "png" })).then(async colors => {
+                    colors = colors.map(color => color.hex())
+
+                    const auth = message.guild.members.cache.get(message.author.id)
+                    const roles = auth.roles.cache
+                        .sort((a, b) => b.position - a.position)
+                        .map(role => role.toString())
+                        .slice(0, -1);
+                    const rolecount = roles.length
+                    const userFlags = auth.user.flags.toArray();
+                    const embed1 = new MessageEmbed()
+                        .setTitle("Here is User Data Senpai")
+                        .setColor(colors[0])
+                        .setThumbnail(message.author.displayAvatarURL({
+                            dynamic: true
+                        }))
+                        .addField("**👤|Username:**", `${message.author.username}`)
+                        .addField("**🔢|Discriminator:**", `${message.author.discriminator}`)
+                        .addField("**🤖|Is a Bot:**", `${message.author.bot ? 'Yes.' : 'No.'}`)
+                        .addField("**🆔|ID:**", `${message.author.id}`)
+                        .addField("**🎖️|Flags:**", userFlags.length ? userFlags.map(flag => flags[flag]).join(', ') : 'User does not have flag.')
+                    if (auth.presence !== null) {
                         embed1
-                            .addField(`**⚔️|Roles[${rolecount}]:**`, `${roles.join(', ')}`)
+                            .addField("**🟢|Status:**", auth.presence.status)
                     } else {
-                        roles.splice(24, 9000, "etc...")
                         embed1
-                            .addField(`**⚔️|Roles[${rolecount}]:**`, `${roles.join(', ')}`)
+                            .addField("**🟢|Status:**", "offline")
                     }
-                } else {
                     embed1
-                        .addField("**⚔️|Roles:**", `User does not have a role.`)
-                }
-                message.channel.send({
-                    embeds: [embed1]
+                        .addField("**📅|Account Creation Date:**", `${message.author.createdAt.toLocaleString()}`)
+                        //console.log(message.member.roles)
+                        .addField("**⬆️|Highest Role:**", auth.roles.highest.id === message.guild.id ? 'User does not have a role.' : `<@&${message.member.roles.highest.id}>`)
+                        .addField("**📅|Server Join Date:**", auth.joinedAt.toLocaleString())
+                    if (roles.length > 0) {
+                        if (roles.length < 26) {
+                            embed1
+                                .addField(`**⚔️|Roles[${rolecount}]:**`, `${roles.join(', ')}`)
+                        } else {
+                            roles.splice(24, 9000, "etc...")
+                            embed1
+                                .addField(`**⚔️|Roles[${rolecount}]:**`, `${roles.join(', ')}`)
+                        }
+                    } else {
+                        embed1
+                            .addField("**⚔️|Roles:**", `User does not have a role.`)
+                    }
+                    message.channel.send({
+                        embeds: [embed1]
+                    })
                 })
             } catch (e) {
                 ErrorMessage(message, e)
             }
         } else {
             try {
-                const roles = member.roles.cache
-                    .sort((a, b) => b.position - a.position)
-                    .map(role => role.toString())
-                    .slice(0, -1);
-                const rolecount = roles.length
-                const userFlags = member.user.flags.toArray();
-                const embed2 = new MessageEmbed()
-                    .setTitle("Here is User Data Senpai")
-                    .setColor("RANDOM")
-                    .setThumbnail(member.user.displayAvatarURL({
-                        dynamic: true
-                    }))
-                    .addField("**👤|Username:**", `${member.user.username}`)
-                    .addField("**🔢|Discriminator:**", `${member.user.discriminator}`)
-                    .addField("**🤖|Is a Bot:**", `${member.user.bot ? 'Yes.' : 'No.'}`)
-                    .addField("**🆔|ID:**", `${member.user.id}`)
-                    .addField("**🎖️|Flags:**", userFlags.length ? userFlags.map(flag => flags[flag]).join(', ') : 'User does not have flag.')
-                if (member.presence !== null) {
-                    embed2
-                        .addField("**🟢|Status:**", member.presence.status)
-                } else {
-                    embed2
-                        .addField("**🟢|Status:**", "offline")
-                }
-                embed2
-                    .addField("**📅|Account Creation Date:**", `${member.user.createdAt.toLocaleString() }`)
-                    .addField("**⬆️|Highest Role:**", member.roles.highest.id === message.guild.id ? 'User does not have a role.' : `<@&${member.roles.highest.id}>`)
-                    .addField("**📅|Server Join Date:**", member.joinedAt.toLocaleString())
-                console.log(roles.length)
-                //roles.push("test")
-                if (roles.length > 0) {
-                    if (roles.length < 26) {
+                await getcolors(member.user.displayAvatarURL({ fomrat: "png" })).then(async colors => {
+                    colors = await colors.map(color => color.hex())
+
+                    const roles = member.roles.cache
+                        .sort((a, b) => b.position - a.position)
+                        .map(role => role.toString())
+                        .slice(0, -1);
+                    const rolecount = roles.length
+                    const userFlags = member.user.flags.toArray();
+                    const embed2 = new MessageEmbed()
+                        .setTitle("Here is User Data Senpai")
+                        .setColor(colors[0])
+                        .setThumbnail(member.user.displayAvatarURL({
+                            dynamic: true
+                        }))
+                        .addField("**👤|Username:**", `${member.user.username}`)
+                        .addField("**🔢|Discriminator:**", `${member.user.discriminator}`)
+                        .addField("**🤖|Is a Bot:**", `${member.user.bot ? 'Yes.' : 'No.'}`)
+                        .addField("**🆔|ID:**", `${member.user.id}`)
+                        .addField("**🎖️|Flags:**", userFlags.length ? userFlags.map(flag => flags[flag]).join(', ') : 'User does not have flag.')
+                    if (member.presence !== null) {
                         embed2
-                            .addField(`**⚔️|Roles[${rolecount}]:**`, `${roles.join(', ')}`)
+                            .addField("**🟢|Status:**", member.presence.status)
                     } else {
-                        roles.splice(24, 9000, "etc...")
                         embed2
-                            .addField(`**⚔️|Roles[${rolecount}]:**`, `${roles.join(', ')}`)
+                            .addField("**🟢|Status:**", "offline")
                     }
-                } else {
                     embed2
-                        .addField("**⚔️|Roles:**", `User does not have a role.`)
-                }
-                message.channel.send({
-                    embeds: [embed2]
+                        .addField("**📅|Account Creation Date:**", `${member.user.createdAt.toLocaleString()}`)
+                        .addField("**⬆️|Highest Role:**", member.roles.highest.id === message.guild.id ? 'User does not have a role.' : `<@&${member.roles.highest.id}>`)
+                        .addField("**📅|Server Join Date:**", member.joinedAt.toLocaleString())
+                    console.log(roles.length)
+                    //roles.push("test")
+                    if (roles.length > 0) {
+                        if (roles.length < 26) {
+                            embed2
+                                .addField(`**⚔️|Roles[${rolecount}]:**`, `${roles.join(', ')}`)
+                        } else {
+                            roles.splice(24, 9000, "etc...")
+                            embed2
+                                .addField(`**⚔️|Roles[${rolecount}]:**`, `${roles.join(', ')}`)
+                        }
+                    } else {
+                        embed2
+                            .addField("**⚔️|Roles:**", `User does not have a role.`)
+                    }
+                    message.channel.send({
+                        embeds: [embed2]
+                    })
                 })
             } catch (e) {
                 ErrorMessage(message, e)
