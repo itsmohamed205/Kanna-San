@@ -15,6 +15,7 @@ const globPromise = promisify(glob);
  */
 module.exports = async (client) => {
     // Commands
+    console.log("the handler for main commands is active somehow")
     const commandFiles = await globPromise(`${process.cwd()}/commands/**/*.js`);
     commandFiles.map((value) => {
         const file = require(value);

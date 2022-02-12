@@ -10,4 +10,5 @@ module.exports = () => {
         useFindAndModify: true,
         useUnifiedTopology: true,
     });
+console.log("Database is working successfully")
 };
