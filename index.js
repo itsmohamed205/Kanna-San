@@ -60,7 +60,7 @@ client.emotes = client.config.emoji
 client.db = new OP(client.config.mongodburl);
 
 // Initializing the project
-["index", "error", "mongoose"].forEach((handler) => {
+["index", "error"].forEach((handler) => {
   require("./handler/" + handler)(client);
 })
 
