@@ -19,13 +19,30 @@ async function ErrorMessage(message, str) {
   try {
     const embed = new MessageEmbed()
     .setColor("#cf352e")
-      .setDescription(`${client.emotes.error} | **The System detected a new error!**\nTriggered Command: **\`${message.content}\`**\nServer: **\`${message.guild.name} (ID: ${message.guild.id})\`**\nError:\n\`\`\`\n${str}\n\`\`\``)
-      .setTimestamp()
-      .setFooter({
-        text: "Error Time"
-      });
-    const home = await client.guilds.cache.get(client.config.channels.guild)
-    const channel = await home.channels.cache.get(client.config.channels.error)
+      .setDescription(`${client.emotes.error} | **The System detected a new error!**`)
+      .addFields({
+        name: `Triggered Command:`,
+        value: `**\`${message.content}\`**`,
+        inline: true
+      },
+      {
+        name: "Server:",
+        value: `**\`${message.guild.name} (ID: ${message.guild.id})\`**`,
+        inline: true
+      },
+      {
+        name: "Error:",
+        value: ```\`\`\`\n${str}\n\`\`\``,
+        inline: true
+      },
+      {
+        name: "Error Time:",
+        value: `<t:${new Date.getTime() / 1000}:R>`,
+        inline: true
+      })
+      .setThumbnail("");
+    
+    const channel = await client.channels.cache.get(client.config.channels.error)
     await channel.send({
       embeds: [embed]
     })
