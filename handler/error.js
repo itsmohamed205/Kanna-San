@@ -1,7 +1,7 @@
 const Discord = require("discord.js")
 
 module.exports = (client) => {
-
+console.log("Error Handler is working for:" + " " + client.id)
     const errChannel = "913193049549602826"
 
     process.on('unhandledRejection', (reason, p) => {

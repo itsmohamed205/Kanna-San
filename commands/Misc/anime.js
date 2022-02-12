@@ -109,7 +109,7 @@ Episode: ${manga[0].attributes.episodeLength
             );
         }
         try {
-            await Msg.delete();
+            await Msg.delete()
 
             return message.channel.send({
                 embeds: [Embed]
