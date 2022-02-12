@@ -17,7 +17,7 @@ module.exports = (client) => {
             .setTimestamp()
             .setFooter("Anti-Crash System");
 
-            const embed = new MessageEmbed()
+            const embed = new Discord.MessageEmbed()
     .setColor("#cf352e")
       .setDescription(`${client.emotes.error} | **The System detected a new error!**`)
       .addFields({
