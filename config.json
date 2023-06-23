@@ -1,9 +1,9 @@
 {
-    "token": "NjkyNTM1ODg0NjgzNDExNDc3.Xnv8TQ.nq8JTeMIg5jSFbl6HX_oEyf5HF0",
+    "token": "INVALIED",
     "prefix": "&",
     "embed": "#CAEFFF",
-    "mongooseConnectionString": "mongodb+srv://saberchan:450996263@senpaisaberdb.tmhya.mongodb.net/Neko-Maid",
-    "mongodburl": "mongodb+srv://saberchan:450996263@senpaisaberdb.tmhya.mongodb.net/Neko-Maid",
+    "mongooseConnectionString": "mongodb+srv://username:123456@name.tmhya.mongodb.net/name",
+    "mongodburl": "mongodb+srv://username:123456@name.tmhya.mongodb.net/name",
     "emoji": {
         "play": "<a:vibe:940373009594716230>",
         "stop": "<a:play:940349578593574942>",
