@@ -70,9 +70,9 @@ anime, manga, character, movie, wallpaper
   .addField("**SOUNDBOARD**" , `\`\`\`
 ara ara, yameta, ohayo, baka, senpai, onichan, ayaya, moshi, sad, smack, keyboard smack, to be continued, wow, yeet, yes, muri, wtf, hehe boi, nani, kawaii koto, ewww, nice, gomen, oooh
 \`\`\``)
-  .addField(`**USEFUL LINKS**`,`   [Invite Me](https://discord.com/api/oauth2/authorize?client_id=857289815673536533&permissions=8589934591&scope=bot%20applications.commands)`+` - `+`[Support Server](https://discord.gg/aVXREv3Me7)`)
+  .addField(`**USEFUL LINKS**`,`   [Invite Me]()`+` - `+`[Support Server]()`)
   .setThumbnail(client.user.displayAvatarURL({ dynamic: true, }))
-  //.setImage("https://images-ext-2.discordapp.net/external/CjWIgsSoR7ErWZFKFOSguYwgEjnvKPNdHfwcBY9t_no/https/media.discordapp.net/attachments/692555215299411989/849290263834001418/AS_divider.gif")
+  //.setImage("")
   .setColor("#ff1ac6");
 
   return interaction.followUp({ embeds: [embed] });

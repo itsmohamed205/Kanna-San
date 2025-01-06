@@ -14,10 +14,10 @@ module.exports = {
 
     const buttons = new MessageActionRow().addComponents(
       new MessageButton()
-      .setURL("https://discord.io/anami")
+      .setURL("")
       .setStyle("LINK")
       .setLabel("SERVER")
-      .setEmoji("888830034574475325")
+      .setEmoji("")
     )
     let prefix;
     prefix = await client.db.get(`prefix_${message.guild.id}`);
@@ -26,7 +26,7 @@ module.exports = {
       new MessageButton()
       .setLabel("Invite")
       .setStyle("LINK")
-      .setURL("https://discord.com/api/oauth2/authorize?client_id=692535884683411477&permissions=8&scope=bot%20applications.commands"),
+      .setURL(""),
 
       new MessageButton()
       .setLabel("DM Help")
@@ -37,7 +37,7 @@ module.exports = {
       .setColor(client.config.embed)
       .setDescription(`**Prefix**: **\`${prefix}\`**\n**Version**: **\`1.21\`**\n**Ping**: **\`${client.ws.ping}\`**\n**Servers Count**: **\`${client.guilds.cache.size}\`**`)
       .setThumbnail(client.user.avatarURL)
-      .addField("**<:MikuMusic:916690228935266336> Music**:", `\`\`\`js\n"play": Play music based on the provided text/url\n "stop": Clear the queue and leave the vc\n"volume": sets the queue volume\n"nowplaying": shows the current active song/music\n"skip": skips the song and remove it\n"pause": pause the queue\n"resume": resume the queue\n"loop": turns on the loop mode\n\`\`\``)
+      .addField("**<:MikuMusic:> Music**:", `\`\`\`js\n"play": Play music based on the provided text/url\n "stop": Clear the queue and leave the vc\n"volume": sets the queue volume\n"nowplaying": shows the current active song/music\n"skip": skips the song and remove it\n"pause": pause the queue\n"resume": resume the queue\n"loop": turns on the loop mode\n\`\`\``)
     let msghelp;
     msghelp = await message.channel.send({
       embeds: [help],
@@ -64,7 +64,7 @@ module.exports = {
           new MessageButton()
           .setLabel("Invite")
           .setStyle("LINK")
-          .setURL("https://discord.com/api/oauth2/authorize?client_id=692535884683411477&permissions=8&scope=bot%20applications.commands"),
+          .setURL(""),
 
         )
 

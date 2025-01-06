@@ -52,8 +52,7 @@ module.exports = async (client) => {
     });
     client.on("ready", async () => {
         // Register for a single guild
-        //await client.guilds.cache.get("549667064214978569").commands.set(arrayOfSlashCommands);
-        // 874941747778707457 save
+        //await client.guilds.cache.get("").commands.set(arrayOfSlashCommands);
         // Register for all the guilds the bot is in
         console.log("Slash is down")
         //await client.application.commands.set(arrayOfSlashCommands);

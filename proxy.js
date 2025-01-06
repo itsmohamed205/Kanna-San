@@ -2,7 +2,7 @@
 const HttpsProxyAgent = require('https-proxy-agent');
 
 // Remove 'user:pass@' if you don't need to authenticate to your proxy.
-const proxy = 'http://kanna:sweetie1@111.111.111.111:8080';
+const proxy = '';
 const agent = HttpsProxyAgent(proxy);
 
 const stream = ytdl('https://www.youtube.com/watch?v=aqz-KE-bpKQ', {

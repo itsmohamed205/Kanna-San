@@ -1,15 +1,15 @@
 {
-    "token": "INVALIED",
-    "prefix": "&",
-    "embed": "#CAEFFF",
-    "mongooseConnectionString": "mongodb+srv://username:123456@name.tmhya.mongodb.net/name",
-    "mongodburl": "mongodb+srv://username:123456@name.tmhya.mongodb.net/name",
+    "token": "",
+    "prefix": "",
+    "embed": "",
+    "mongooseConnectionString": "",
+    "mongodburl": "",
     "emoji": {
-        "play": "<a:vibe:940373009594716230>",
-        "stop": "<a:play:940349578593574942>",
-        "success": "<a:Kyoko_ThumbsUp:940374105125957694>",
-        "error": "<:Awkward:940344281896476683>",
-        "lazy": "<:youmu_sleepy:940375326121402449>",
+        "play": "",
+        "stop": "",
+        "success": "",
+        "error": "",
+        "lazy": "",
         "button1": "",
         "button2": "",
         "button3": "",
@@ -17,8 +17,8 @@
         "button5": ""
     },
     "channels": {
-        "guild": "910650559256739970",
-        "error": "913193049549602826",
-        "bootup": "913193049549602826"
+        "guild": "",
+        "error": "",
+        "bootup": ""
     }
 }

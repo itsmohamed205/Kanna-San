@@ -44,27 +44,27 @@ client.on("ready", async () => {
     let botactivities = [{
         text: 'people smile',
         type: "WATCHING",
-        URL: "https://discord.io/anami"
+        URL: ""
       },
       {
         text: "ping for help",
         type: "PLAYING",
-        URL: "https://discord.io/anami"
+        URL: ""
       },
       {
         text: "the sky with happy smile",
         type: "WATCHING",
-        URL: "https://discord.io/anami"
+        URL: ""
       },
       {
         text: "people's laugh",
         type: "LISTENING",
-        url: "https://discord.io/anami"
+        url: ""
       },
       {
         text: `with ${client.guilds.cache.reduce((acc, guild) => acc + guild.memberCount, 0)} users`,
         type: "PLAYING",
-        URL: "https://discord.io/anami"
+        URL: ""
       },
     ];
 

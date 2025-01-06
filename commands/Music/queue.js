@@ -63,17 +63,17 @@ module.exports = {
                 new MessageButton()
                 .setCustomId("qback")
                 .setDisabled()
-                .setEmoji("882100071460667402")
+                .setEmoji("")
                 .setStyle("SECONDARY"),
 
                 new MessageButton()
                 .setCustomId("qstop")
-                .setEmoji("882112522713452585")
+                .setEmoji("")
                 .setStyle("SUCCESS"),
 
                 new MessageButton()
                 .setCustomId("qnext")
-                .setEmoji("882099970596020295")
+                .setEmoji("")
                 .setStyle("SUCCESS")
             );
 

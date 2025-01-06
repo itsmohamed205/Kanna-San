@@ -79,9 +79,9 @@ module.exports = {
         )
         let source
         if (queue.songs[0].source === "youtube") {
-            source = "<:YouTube:940378252076253245> YouTube";
+            source = "<:YouTube:> YouTube";
         } else {
-            source = "<:SpotifyLogo:940377715989700628> Spotify"
+            source = "<:SpotifyLogo:> Spotify"
         }
        // console.log(queue.songs[0].name + ": " + queue.songs[0].source)
         const channelvc = await message.guild.channels.cache.get(member.voice.channelId)

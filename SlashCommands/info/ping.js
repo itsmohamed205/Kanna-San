@@ -27,7 +27,7 @@ const datembed = new MessageEmbed()
     .setColor("#ff1ac6")
     .setDescription(`Senpai, My ping is ${client.ws.ping}ms`)
             .setFooter("Good Day, isn't it? |")
-            //.setImage("https://images-ext-2.discordapp.net/external/CjWIgsSoR7ErWZFKFOSguYwgEjnvKPNdHfwcBY9t_no/https/media.discordapp.net/attachments/692555215299411989/849290263834001418/AS_divider.gif")
+            //.setImage("")
             .setTimestamp()
             
 interaction.editReply({ embeds: [datembed] })

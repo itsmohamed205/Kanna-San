@@ -21,9 +21,9 @@ module.exports = {
       if (!prefix) prefix = client.config.prefix
       const buttons = new MessageActionRow().addComponents(
         new MessageButton()
-        .setEmoji("940344915051823144")
+        .setEmoji("")
         .setStyle("LINK")
-        .setURL("https://discord.com/api/oauth2/authorize?client_id=692535884683411477&permissions=8&scope=bot%20applications.commands")
+        .setURL("")
       )
       const invite = new MessageEmbed()
         .setColor(client.config.embed)

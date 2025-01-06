@@ -35,7 +35,7 @@ module.exports = {
             .addComponents(
                 new MessageButton()
                     .setStyle("LINK")
-                    .setEmoji("940351491590488114")
+                    .setEmoji("")
                     .setLabel("Download")
                     .setURL(user.user.displayAvatarURL({
                         dynamic: true,
